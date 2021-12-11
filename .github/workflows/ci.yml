@@ -16,26 +16,37 @@ on:
 
 
 jobs:
-  Linter:
+  linter:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout Code Repository
+      - name: Checkout Code
         uses: actions/checkout@v2
-
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          fetch-depth: 0
 
-      # Run all pre-commit hooks on all the files.
-      # Getting only staged files can be tricky in case a new PR is opened
-      # since the action is run on a branch in detached head state
-      - name: Install and Run Pre-commit
-        uses: pre-commit/action@v2.0.3
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # - name: Checkout Code Repository
+      #   uses: actions/checkout@v2
+
+      # - name: Set up Python 3.9
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: 3.9
+
+      # # Run all pre-commit hooks on all the files.
+      # # Getting only staged files can be tricky in case a new PR is opened
+      # # since the action is run on a branch in detached head state
+      # - name: Install and Run Pre-commit
+      #   uses: pre-commit/action@v2.0.3
 
   # With no caching at all the entire ci process takes 4m 30s to complete!
-  Tests:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
