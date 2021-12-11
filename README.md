@@ -1,6 +1,6 @@
 # SARS-CoV-2 Dashboard
 
-[![CI](https://github.com/thomasbtf/sars-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/thomasbtf/sars-dashboard/actions/workflows/ci.yml)
+[![Tests](https://github.com/thomasbtf/sars-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/thomasbtf/sars-dashboard/actions/workflows/ci.yml)
 
 Dashboard to browse analyses created by UnCoVar.
 
