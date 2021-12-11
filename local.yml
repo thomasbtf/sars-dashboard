@@ -49,7 +49,7 @@ services:
       - ./config:/app/config:z
       - ./sars_dashboard:/app/sars_dashboard:z
     ports:
-      - "7000:7000"
+      - "7001:7000"
     command: /start-docs
 
   mailhog:
