@@ -5,10 +5,10 @@ from django.core.files.base import ContentFile
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from .models import ReportFiles, ReportIndex, ZippedReport
+from .models import Report, ReportFiles, ReportIndex
 
 
-@receiver(post_save, sender=ZippedReport)
+@receiver(post_save, sender=Report)
 def unzip_report(sender, instance, created, **kwargs):
     if created:
         # unzip the report

@@ -1,11 +1,11 @@
 from django import forms
 
-from .models import ZippedReport
+from .models import Report
 
 
-class ZippedReportForm(forms.ModelForm):
+class ReportForm(forms.ModelForm):
     class Meta:
-        model = ZippedReport
+        model = Report
         fields = (
             "description",
             "zip_file",
