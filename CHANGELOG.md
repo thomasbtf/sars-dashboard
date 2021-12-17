@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.1.0...v0.2.0) (2021-12-16)
+
+
+### Features
+
+* add makefile ([#17](https://www.github.com/thomasbtf/sars-dashboard/issues/17)) ([9f42083](https://www.github.com/thomasbtf/sars-dashboard/commit/9f42083bdcdc46ef2cdb406b4fbd288eae77e66b))
+* **backend:** add report upload ([#16](https://www.github.com/thomasbtf/sars-dashboard/issues/16)) ([56fcdde](https://www.github.com/thomasbtf/sars-dashboard/commit/56fcddee54862864efe31e6b1f0f7ee5b3d7c8ca))
+* **dep:** bump amannn/action-semantic-pull-request from 3.4.6 to 3.5.0 ([#15](https://www.github.com/thomasbtf/sars-dashboard/issues/15)) ([747ee2e](https://www.github.com/thomasbtf/sars-dashboard/commit/747ee2eed679358fb23b6f67c0f27540efaaf36a))
+
 ## 0.1.0 (2021-12-11)
 
 
