@@ -23,9 +23,9 @@ migrations:
 	docker-compose -f local.yml run --rm django python manage.py migrate
 
 .PHONY: flush
-migrations:
+flush:
 	docker-compose -f local.yml run --rm django python manage.py flush
 
-.PHONY: startapp
-migrations:
-	docker-compose -f local.yml run --rm django python manage.py startapp sars_dashboard/projects
+.PHONY: app
+app:
+	docker-compose -f local.yml run --rm django python manage.py startapp $(name)
