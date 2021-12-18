@@ -80,6 +80,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "sars_dashboard.users",
     "sars_dashboard.reports",
+    "sars_dashboard.projects",
     # Your stuff: custom apps go here
 ]
 
