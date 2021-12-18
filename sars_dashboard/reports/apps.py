@@ -1,10 +1,15 @@
 from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
 
 class ReportsConfig(AppConfig):
+    name = "sars_dashboard.reports"
+    verbose_name = _("Reports")
     default_auto_field = "django.db.models.BigAutoField"
-    name = "reports"
 
     def ready(self):
         # Implicitly connect a signal handlers decorated with @receiver.
-        from . import signals  # noqa F401
+        try:
+            import sars_dashboard.reports.signals  # noqa F401
+        except ImportError:
+            pass
