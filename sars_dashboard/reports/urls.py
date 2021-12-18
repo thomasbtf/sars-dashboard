@@ -1,6 +1,6 @@
 from django.urls import path
 
-from reports.views import Report_create_view, ReportListView, ReportView
+from sars_dashboard.reports.views import Report_create_view, ReportListView, ReportView
 
 app_name = "reports"
 urlpatterns = [

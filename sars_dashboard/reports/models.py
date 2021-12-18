@@ -15,6 +15,9 @@ class Report(models.Model):
     zip_file = models.FileField(upload_to="report-zipped")
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.zip_file.name.removesuffix(".zip")
+
 
 class ReportFiles(models.Model):
     zipped_report = models.ForeignKey(Report, on_delete=models.CASCADE)
@@ -22,8 +25,14 @@ class ReportFiles(models.Model):
     original_name = models.CharField(max_length=255, blank=True)
     is_index = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.original_name
+
 
 class ReportIndex(models.Model):
     zipped_report = models.ForeignKey(Report, on_delete=models.CASCADE)
     file = models.FileField(upload_to=get_report_path, max_length=255)
     original_name = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.original_name
