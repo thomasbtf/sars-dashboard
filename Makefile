@@ -25,3 +25,7 @@ migrations:
 .PHONY: flush
 migrations:
 	docker-compose -f local.yml run --rm django python manage.py flush
+
+.PHONY: startapp
+migrations:
+	docker-compose -f local.yml run --rm django python manage.py startapp sars_dashboard/projects
