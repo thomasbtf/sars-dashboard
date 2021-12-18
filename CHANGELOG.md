@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.2.0...v0.3.0) (2021-12-18)
+
+
+### Features
+
+* **backend:** add projects ([#22](https://www.github.com/thomasbtf/sars-dashboard/issues/22)) ([032e963](https://www.github.com/thomasbtf/sars-dashboard/commit/032e963dc87f5ac1dfd631905b905526cf7eec68))
+
+
+### Bug Fixes
+
+* update directives flush and app ([#23](https://www.github.com/thomasbtf/sars-dashboard/issues/23)) ([76a0c66](https://www.github.com/thomasbtf/sars-dashboard/commit/76a0c6665e1ed7b34123190658b8976f753f4462))
+
 ## [0.2.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.1.0...v0.2.0) (2021-12-16)
 
 
