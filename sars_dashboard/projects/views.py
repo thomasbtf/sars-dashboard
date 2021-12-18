@@ -17,7 +17,7 @@ class ReportCreateView(CreateView):
     fields = ["title", "description"]
 
     def get_success_url(self):
-        return reverse_lazy("projects:detail", kwargs={"pk": self.object.pk})
+        return reverse("projects:detail", kwargs={"pk": self.object.pk})
 
 
 class ReportDetailView(DetailView):
