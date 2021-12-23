@@ -1,8 +1,5 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<h1>Report from </h1>
-    {% for index in report.reportindex_set.all %}
-        Open: <a href="{{ index.file.url }}">{{ index.file.url }}</a> <br>
-    {% endfor %}
-{% endblock %}
+{% extends 'base.html' %} {% block content %}
+<h1>Report from</h1>
+{% for index in report.reportindex_set.all %} Open:
+<a href="{{ index.file.url }}">{{ index.file.url }}</a> <br />
+{% endfor %} {% endblock %}

@@ -1,16 +1,10 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h1>Projects</h1>
-    {% for project in object_list %}
-        Upload: {{ report.uploaded_at|date }} <br>
-        Description: {{ report.description }} <br>
-        Download: <a href="{{ report.zip_file.url }}">{{ report.zip_file.url }}</a> <br>
+{% for project in object_list %} Upload: {{ report.uploaded_at|date }} <br />
+Description: {{ report.description }} <br />
+Download: <a href="{{ report.zip_file.url }}">{{ report.zip_file.url }}</a>
+<br />
 
-        {% for index in report.reportindex_set.all %}
-        Open: <a href="{{ index.file.url }}">{{ index.file.url }}</a> <br>
-        {% endfor %}
-    {% empty %}
-        No uploaded reports yet.
-    {% endfor %}
-{% endblock %}
+{% for index in report.reportindex_set.all %} Open:
+<a href="{{ index.file.url }}">{{ index.file.url }}</a> <br />
+{% endfor %} {% empty %} No uploaded reports yet. {% endfor %} {% endblock %}

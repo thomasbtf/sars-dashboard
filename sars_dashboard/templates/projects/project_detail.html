@@ -1,8 +1,6 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h1>{{ object.title }}</h1>
 <p>{{ object.description }}</p>
-<p>Reporter: </p>
+<p>Reporter:</p>
 <p>Created: {{ object.pub_date|date }}</p>
 {% endblock %}
