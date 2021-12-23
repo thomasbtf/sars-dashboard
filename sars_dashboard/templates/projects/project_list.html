@@ -1,10 +1,12 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>Projects</h1>
 <ul>
-  {% for project in object_list %}
-  <li>{{ project.title }} - {{ project.creation_date|date }}</li>
-  {% empty %}
-  <li>No projects yet.</li>
-  {% endfor %}
+{% for project in object_list %}
+    <li>{{ project.title }} - {{ project.creation_date|date }}</li>
+{% empty %}
+    <li>No projects yet.</li>
+{% endfor %}
 </ul>
 {% endblock %}
