@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.3.0...v0.4.0) (2021-12-23)
+
+
+### Features
+
+* **backend:** add report upload api ([#28](https://www.github.com/thomasbtf/sars-dashboard/issues/28)) ([8395fe8](https://www.github.com/thomasbtf/sars-dashboard/commit/8395fe82dca9b8dad511e3101d4386f2041f2c79))
+
 ## [0.3.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.2.0...v0.3.0) (2021-12-18)
 
 
