@@ -15,6 +15,7 @@ The steps below will get you up and running with a local development environment
 - Pre-commit; refer to the official documentation for the [pre-commit](https://pre-commit.com/#install).
 
 ## Build the Stack
+
 This can take a while, especially the first time you run this particular command on your development system:
 
 ```bash
@@ -45,7 +46,7 @@ Open a terminal at the project root and run the following for local development:
 
 ```bash
 docker-compose -f local.yml up
-````
+```
 
 To run in a detached (background) mode, just:
 
@@ -60,6 +61,6 @@ As with any shell command that we wish to run in our container, this is done usi
 ```bash
 docker-compose -f local.yml run --rm django python manage.py migrate
 docker-compose -f local.yml run --rm django python manage.py createsuperuser
-````
+```
 
 Here, django is the target service we are executing the commands against.
