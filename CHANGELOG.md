@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.4.0...v0.5.0) (2021-12-25)
+
+
+### Features
+
+* **backend:** async report file extraction ([#30](https://www.github.com/thomasbtf/sars-dashboard/issues/30)) ([adc650b](https://www.github.com/thomasbtf/sars-dashboard/commit/adc650bd03dd00360bbba5db5b1739f31a087ef9))
+
 ## [0.4.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.3.0...v0.4.0) (2021-12-23)
 
 
