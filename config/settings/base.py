@@ -79,8 +79,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "sars_dashboard.users",
-    "sars_dashboard.reports",
     "sars_dashboard.projects",
+    "sars_dashboard.reports",
     # Your stuff: custom apps go here
 ]
 
@@ -190,6 +190,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
+                "sars_dashboard.projects.context_processors.projects",
             ],
         },
     }
