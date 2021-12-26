@@ -6,7 +6,4 @@ from .models import Report
 class ReportForm(forms.ModelForm):
     class Meta:
         model = Report
-        fields = (
-            "description",
-            "zip_file",
-        )
+        fields = "__all__"

@@ -11,8 +11,14 @@
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
 
     {% block css %}
+    <!-- Popper, needed for Bootstrap dropdown -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Font Awesome CSS -->
+    <script src="https://kit.fontawesome.com/fdc8b0e97a.js" crossorigin="anonymous"></script>
 
     <!-- Your stuff: Third-party CSS libraries go here -->{% compress css %}
     <!-- This file stores project-specific CSS -->
@@ -34,76 +40,143 @@
   </head>
 
   <body>
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+          <!-- navbar -->
+          <div class="col-auto bg-dark text-white">
+            <div class="d-flex flex-column flex-shrink-0 p-3 min-vh-100">
 
-    <div class="mb-1">
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="container-fluid">
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'home' %}">SARS-CoV-2 Dashboard</a>
+              <!-- brand -->
+              <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center text-white text-decoration-none justify-content-between mb-5">
+                <svg class="fas fa-virus fa-2x" width="64" height="32"></svg>
+                <span class="">Sequencing<br>Dashboard</span>
+              </a>
+              <!-- /brand -->
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-              </li>
+              <!-- <hr> -->
+
+              <!-- menu -->
+              <ul class="nav nav-pills flex-column mb-auto mt-2">
+
+                <li class="nav-item">
+                  <a href="{% url 'home' %}" class="nav-link text-white {% block nav_dashboard %}{% endblock nav_dashboard %}">
+                    <!-- <i class="fas fa-table-columns"></i> -->
+                    <span class="mx-2 d-none d-sm-inline">Dashboard</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link text-white {% block nav_runs %}{% endblock nav_runs %}">
+                    <!-- <i class="fas fa-bars-progress"></i> -->
+                    <span class="mx-2 d-none d-sm-inline">Runs</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link text-white {% block nav_reports %}{% endblock nav_reports %}"  href="{% url 'projects:list'%}" data-bs-target="#home-collapse" aria-expanded="true">
+                    <!-- <i class="fas fa-chart-pie"></i> -->
+                    <span class="mx-2 d-none d-sm-inline">Reports</span>
+                    <!-- <i class="fa fa-chevron-down pull-right d-none d-sm-inline"></i> -->
+                  </a>
+                  <div class="collapse show" id="home-collapse">
+                    <ul class="nav flex-column small mx-4">
+                      {% for project in projects %}
+                          <li class="nav-item mt-2"><a href="{% url 'projects:detail' project.pk  %}" class="nav-link text-white d-none d-sm-inline">{{ project.title }}</a></li>
+                      {% empty %}
+                        {% if request.user.is_authenticated %}
+                          <li class="nav-item mt-2"><a href="{% url 'projects:create' %}" class="nav-link text-white d-none d-sm-inline">Add a project...</a></li>
+                        {% else %}
+
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </li>
+
+              </ul>
+              <!-- /menu -->
+
+              <!-- quick links -->
+              <small>
+                <div class="d-none d-lg-block w-100">
+                  <span class="text-muted"><strong>Quick Links</strong></span>
+                  <ul class="nav flex-column mt-2">
+                    <li class="nav-item">
+                      <a href="{% url 'about' %}" class="nav-link {% block nav_about %}text-muted{% endblock nav_about %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'team' %}" class="nav-link {% block nav_team %}text-muted{% endblock nav_team %}">Team</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'contact' %}" class="nav-link {% block nav_contact %}text-muted{% endblock nav_contact %}">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link {% block nav_changelog %}text-muted{% endblock nav_changelog %}">Changelog</a>
+                    </li>
+                  </ul>
+                </div>
+              </small>
+              <!-- /quick links -->
+
+              <hr>
+
+              <!-- user -->
+              <div class="dropdown">
               {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% translate "My Profile" %}</a>
-                </li>
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a class="nav-link" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a>
-                </li>
-                <li class="nav-item">
-                  {# URL provided by django-allauth/account/urls.py #}
-                  <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
-                </li>
-              {% endif %}
-            </ul>
+                  <a href="#" class="nav-link d-flex align-items-center text-white text-decoration-none dropdown-toggle pull-right d-none d-sm-inline" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
+                    {{ user.username }}
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser">
+                    <li><a class="dropdown-item" href="{% url 'projects:create' %}">{% translate "New project" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'reports:create' %}">{% translate "Upload report" %}</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'users:detail' request.user.username  %}">{% translate "Profile" %}</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a></li>
+                  </ul>
+                  {% else %}
+                  <!-- <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a> -->
+                  <a id="log-in-link" class="nav-link align-items-center text-white text-decoration-none" href="{% url 'account_login' %}">
+                    {% translate "Sign In" %}
+                  </a>
+                  {% endif %}
+              </div>
+              <!-- /user -->
+            </div>
           </div>
+          <!-- /navbar -->
+
+          <!-- content -->
+          <div class="col-auto bg-light">
+            {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          {% block content %}
+          {% endblock content %}
+
+
+          {% block modal %}{% endblock modal %}
+
+          {% block inline_javascript %}
+          {% comment %}
+          Script tags with only code, no src (defer by default). To run
+          with a "defer" so that you run run inline code:
+          <script>
+            window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
+          </script>
+          {% endcomment %}
+          {% endblock inline_javascript %}
+
         </div>
-      </nav>
-
+          <!-- /content -->
+      </div>
     </div>
-
-    <div class="container">
-
-      {% if messages %}
-        {% for message in messages %}
-          <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        {% endfor %}
-      {% endif %}
-
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
-
-    </div> <!-- /container -->
-
-    {% block modal %}{% endblock modal %}
-
-    {% block inline_javascript %}
-    {% comment %}
-    Script tags with only code, no src (defer by default). To run
-    with a "defer" so that you run run inline code:
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
-    </script>
-    {% endcomment %}
-    {% endblock inline_javascript %}
   </body>
 </html>

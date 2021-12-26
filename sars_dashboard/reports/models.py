@@ -1,6 +1,10 @@
+import datetime
 import os
 
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+from sars_dashboard.projects.models import Project
 
 
 def get_report_path(instance, filename):
@@ -11,6 +15,10 @@ def get_report_path(instance, filename):
 
 
 class Report(models.Model):
+    belongs_to = models.ForeignKey(
+        Project, on_delete=models.CASCADE, blank=True, null=True
+    )
+    date = models.DateField(_("Date"), default=datetime.date.today)
     description = models.CharField(max_length=255, blank=True)
     zip_file = models.FileField(upload_to="report-zipped")
     uploaded_at = models.DateTimeField(auto_now_add=True)
