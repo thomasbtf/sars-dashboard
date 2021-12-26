@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.5.0...v0.6.0) (2021-12-26)
+
+
+### Features
+
+* **frontend:** add navbar ([#33](https://www.github.com/thomasbtf/sars-dashboard/issues/33)) ([da7d3f6](https://www.github.com/thomasbtf/sars-dashboard/commit/da7d3f6d08096cfc1490c2784537124476f85279))
+
+
+### Bug Fixes
+
+* **backend:** add missing migration dirs ([#35](https://www.github.com/thomasbtf/sars-dashboard/issues/35)) ([acbf62b](https://www.github.com/thomasbtf/sars-dashboard/commit/acbf62b91c6a227eadf85e578412985f2efcfe6f))
+
 ## [0.5.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.4.0...v0.5.0) (2021-12-25)
 
 
