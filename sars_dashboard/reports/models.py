@@ -16,7 +16,12 @@ def get_report_path(instance, filename):
 
 class Report(models.Model):
     belongs_to = models.ForeignKey(
-        Project, on_delete=models.CASCADE, blank=True, null=True
+        Project,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        related_name="reports",
+        verbose_name=_("Project"),
     )
     date = models.DateField(_("Date"), default=datetime.date.today)
     description = models.CharField(max_length=255, blank=True)
