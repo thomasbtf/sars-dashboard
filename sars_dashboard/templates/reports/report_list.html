@@ -1,17 +1,40 @@
-{% extends 'base.html' %}
+{% extends 'reports/base.html' %}
 
-{% block content %}
-<h1>Reports</h1>
-    {% for report in object_list %}
-        Upload: {{ report.uploaded_at|date }} <br>
-        Description: {{ report.description }} <br>
-        Download: <a href="{{ report.zip_file.url }}">{{ report.zip_file.url }}</a> <br>
-
-        {% for index in report.reportindex_set.all %}
-        Open: <a href="{{ index.file.url }}">{{ index.file.url }}</a> <br>
-        {% endfor %}
-    {% empty %}
-        No uploaded reports yet.
-    {% endfor %}
-
+{% block inner %}
+    <h1>Reports</h1>
+    <p>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Report PK</th>
+                            <th>Report Project</th>
+                            <th>Report Description</th>
+                            <th>Report Date</th>
+                            <th>Report Uploaded</th>
+                            <th>Report Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for report in object_list %}
+                            <tr>
+                                <td>{{report.pk}}</td>
+                                <td>{{report.belongs_to.title}}</td>
+                                <td>{{report.description}}</td>
+                                <td>{{report.date}}</td>
+                                <td>{{report.uploaded_at}}</td>
+                                <td>
+                                    <a href="{{report.zip_file.url}}" class="btn btn-primary">Download</a>
+                                    <a href="{{report.reportindex.file.url}}" class="btn btn-primary">Open</a>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            No uploaded reports yet.
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </p>
 {% endblock %}
