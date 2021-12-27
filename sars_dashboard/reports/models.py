@@ -33,7 +33,7 @@ class Report(models.Model):
 
 
 class ReportFiles(models.Model):
-    zipped_report = models.ForeignKey(Report, on_delete=models.CASCADE)
+    zipped_report = models.OneToOneField(Report, on_delete=models.CASCADE)
     file = models.FileField(upload_to=get_report_path, max_length=255)
     original_name = models.CharField(max_length=255, blank=True)
     is_index = models.BooleanField(default=False)
@@ -43,7 +43,7 @@ class ReportFiles(models.Model):
 
 
 class ReportIndex(models.Model):
-    zipped_report = models.ForeignKey(Report, on_delete=models.CASCADE)
+    zipped_report = models.OneToOneField(Report, on_delete=models.CASCADE)
     file = models.FileField(upload_to=get_report_path, max_length=255)
     original_name = models.CharField(max_length=255, blank=True)
 

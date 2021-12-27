@@ -1,8 +1,59 @@
-{% extends 'projects/base.html' %}
+{% extends 'projects/base_no_border.html' %}
 
-{% block content %}
-<h1>{{ object.title }}</h1>
-<p>{{ object.description }}</p>
-<p>Reporter: </p>
-<p>Created: {{ object.pub_date|date }}</p>
+{% block inner %}
+    <div class="row g-2">
+
+        {% if not project.reports.all %}
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1>Reports for Project {{project}}</h1>
+                <p class="lead text-muted">No report uploaded for this project yet.</p>
+                <p>
+                    <a href="{% url 'reports:create' %}" class="btn btn-outline-primary">Add a report</a>
+                </p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="col min-vh-100">
+            <iframe class="iframe-preview" width="100%" height="100%" src="{{project.reports.first.reportindex.file.url}}"></iframe>
+        </div>
+        <div class="col-xl-auto col-lg-auto">
+            <div class="container my-4 d-flex justify-content-between align-items-center "></li>
+
+            </div>
+            <ul class="list-group">
+            {% for report in project.reports.all %}
+            <li class="list-group-item d-flex justify-content-between align-items-center ">
+                        {% if report.reportindex.file %}
+                        <a href="{{report.reportindex.file.url}}" class="text-decoration-none">{{ report.date|date:"d.m.Y" }}</a>
+                        <div class="mx-2">
+                            <small>
+                                <a href="{{report.reportindex.file.url}}" class="mx-1 text-decoration-none">
+                                    <i class="fas fa-up-right-from-square"></i>
+                                </a>
+                                <a href="{{ report.zip_file.url }}" class="mx-1 text-decoration-none">
+                                    <i class="fas fa-download"></i>
+                                </a>
+                            </small>
+                        </div>
+                        {% else %}
+                            {{ report.date|date:"d.m.Y" }}
+                        {% endif %}
+                    </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block inline_javascript %}
+    <script>
+        $(document).ready(function() {
+            $('.list-group-item').on('click', function(e) {
+                event.preventDefault();
+                $('.iframe-preview').attr('src', $(this).find('a').attr('href'));
+            });
+        });
+    </script>
 {% endblock %}
