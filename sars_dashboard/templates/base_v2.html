@@ -1,0 +1,117 @@
+{% load static i18n compress%}<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div class="container-fluid vh-100 g-0">
+      <div class="row flex-nowrap g-0">
+          <!-- navbar -->
+          <div class="col-auto bg-dark text-white px-2">
+            <div class="d-flex flex-column flex-shrink-0 py-3 min-vh-100">
+
+              <!-- brand -->
+              <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center text-white justify-content-between mb-5">
+                <svg class="fas fa-virus fa-2x" width="64" height="32"></svg>
+                <span class="">Sequencing<br>Dashboard</span>
+              </a>
+              <!-- /brand -->
+
+              <!-- <hr> -->
+
+              <!-- menu -->
+              <ul class="nav nav-pills flex-column mb-auto mt-2">
+
+                <li class="nav-item">
+                  <a href="{% url 'home' %}" class="nav-link text-white {% block nav_dashboard %}{% endblock nav_dashboard %}">
+                    <!-- <i class="fas fa-table-columns"></i> -->
+                    <span class="mx-2 d-none d-sm-inline">Dashboard</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="{% url 'run' %}" class="nav-link text-white {% block nav_runs %}{% endblock nav_runs %}">
+                    <!-- <i class="fas fa-bars-progress"></i> -->
+                    <span class="mx-2 d-none d-sm-inline">Runs</span>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link text-white {% block nav_reports %}{% endblock nav_reports %}"  href="{% url 'projects:list'%}" data-bs-target="#home-collapse" aria-expanded="true">
+                    <!-- <i class="fas fa-chart-pie"></i> -->
+                    <span class="mx-2 d-none d-sm-inline">Projects</span>
+                    <!-- <i class="fa fa-chevron-down pull-right d-none d-sm-inline"></i> -->
+                  </a>
+                  <div class="collapse show" id="home-collapse">
+                    <ul class="nav flex-column small mx-4">
+                      {% for pro in projects_context %}
+                          <li class="nav-item my-1"><a href="{% url 'projects:detail' pro.pk  %}" class="nav-link {% if project.pk ==  pro.pk%}active{% endif %} text-white d-none d-sm-inline">{{ pro.title }}</a></li>
+                      {% empty %}
+                        {% if request.user.is_authenticated %}
+                          <li class="nav-item my-1"><a href="{% url 'projects:create' %}" class="nav-link text-white d-none d-sm-inline">Add a project...</a></li>
+                        {% else %}
+
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </li>
+
+              </ul>
+              <!-- /menu -->
+
+              <!-- quick links -->
+              <small>
+                <div class="d-none d-lg-block">
+                  <span class="text-muted"><strong>Quick Links</strong></span>
+                  <ul class="nav flex-column mt-2">
+                    <li class="nav-item">
+                      <a href="{% url 'about' %}" class="nav-link {% block nav_about %}text-muted{% endblock nav_about %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'contact' %}" class="nav-link {% block nav_contact %}text-muted{% endblock nav_contact %}">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link {% block nav_changelog %}text-muted{% endblock nav_changelog %}">Changelog</a>
+                    </li>
+                  </ul>
+                </div>
+              </small>
+              <!-- /quick links -->
+
+              <hr>
+
+              <!-- user -->
+              <div class="dropdown">
+              {% if request.user.is_authenticated %}
+                  <a href="#" class="nav-link d-flex align-items-center text-white text-decoration-none dropdown-toggle pull-right d-none d-sm-inline" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
+                    {{ user.username }}
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser">
+                    <li><a class="dropdown-item" href="{% url 'projects:create' %}">{% translate "New project" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'reports:create' %}">{% translate "Upload report" %}</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'users:detail' request.user.username  %}">{% translate "Profile" %}</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">{% translate "Sign Out" %}</a></li>
+                  </ul>
+                  {% else %}
+                  <!-- <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% translate "Sign Up" %}</a> -->
+                  <a id="log-in-link" class="nav-link align-items-center text-white text-decoration-none" href="{% url 'account_login' %}">
+                    {% translate "Sign In" %}
+                  </a>
+                  {% endif %}
+              </div>
+              <!-- /user -->
+            </div>
+          </div>
+          <!-- /navbar -->
+
+          <!-- content -->
+          <div class="col bg-light">
+            <div class="d-flex flex-column min-vh-100">
+
+          </div>
+            <!-- /content -->
+      </div>
+    </div>
+  </body>
+</html>
