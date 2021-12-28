@@ -1,6 +1,6 @@
 {% extends "pages/base.html" %}
 
-{% block nav_contact %}text-white{% endblock nav_contact %}
+{% block nav %}{% with selected='contact' %}{{ block.super }}{% endwith %}{% endblock %}
 
 {% block inner %}
 
@@ -8,10 +8,10 @@
 
     <p class="lead text-muted">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you as soon as possible to answer any questions or to help you.</p>
 
-    <div class="row g-4 pt-4 row-cols-1 row-cols-lg-1">
+    <div class="row g-4 pt-4 row-cols-1 row-cols-lg-2">
         <div class="col d-flex align-items-start">
             <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-                <svg class="fa-solid fa-house fa-2x" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
+                <i class="fas fa-home fa-2x mx-3"></i>
             </div>
             <div>
                 <h2>Data Science Research Group</h2>
@@ -25,36 +25,36 @@
         </div>
         <div class="col d-flex align-items-start">
             <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-                <svg class="fa-solid fa-user fa-2x" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
+                <i class="fas fa-user fa-2x mx-3"></i>
             </div>
             <div>
                 <h2>Team</h2>
                 <div>
                     <p>
                         <strong>Site Development</strong><br>
-                        <a href="mailto:thomas.battenfeld@uk-essen.de" class="text-decoration-none text-reset"><i class="fa-solid fa-envelope text-muted"></i> Thomas Battenfeld</a>
+                        <a href="mailto:thomas.battenfeld@uk-essen.de" class="text-decoration-none text-reset"><i class="fas fa-envelope text-muted"></i> Thomas Battenfeld</a>
                     </p>
                 </div>
                 <div>
                     <p>
                         <strong>SARS-CoV-2 Analysis Workflow</strong><br>
-                        <a href="mailto:thomas.battenfeld@uk-essen.de" class="text-decoration-none text-reset"><i class="fa-solid fa-envelope text-muted"></i> Thomas Battenfeld</a><br>
-                        <a href="mailto:alexander.thomas@uk-essen.de" class="text-decoration-none text-reset"><i class="fa-solid fa-envelope text-muted"></i> Alexander Thomas</a><br>
-                        <a href="mailto:folker.meyer@uk-essen.de" class="text-decoration-none text-reset"><i class="fa-solid fa-envelope text-muted"></i> Folker Meyer</a><br>
-                        <a href="mailto:#" class="text-decoration-none text-reset"><i class="fa-solid fa-envelope text-muted"></i> Johannes Köster</a><br>
+                        <a href="mailto:thomas.battenfeld@uk-essen.de" class="text-decoration-none text-reset"><i class="fas fa-envelope text-muted"></i> Thomas Battenfeld</a><br>
+                        <a href="mailto:alexander.thomas@uk-essen.de" class="text-decoration-none text-reset"><i class="fas fa-envelope text-muted"></i> Alexander Thomas</a><br>
+                        <a href="mailto:folker.meyer@uk-essen.de" class="text-decoration-none text-reset"><i class="fas fa-envelope text-muted"></i> Folker Meyer</a><br>
+                        <a href="mailto:#" class="text-decoration-none text-reset"><i class="fas fa-envelope text-muted"></i> Johannes Köster</a><br>
                     </p>
                 </div>
                 <div>
                     <p>
                         <strong>NextGen Sequencing Team</strong><br>
-                        <a href="mailto:ivana.kraiselburd@uk-essen.de" class="text-decoration-none text-reset"><i class="fa-solid fa-envelope text-muted"></i> Ivana Kraiselburd</a><br>
-                        <a href="mailto:simon.magin@uk-essen.de" class="text-decoration-none text-reset"><i class="fa-solid fa-envelope text-muted"></i> Simon Magin</a><br>
+                        <a href="mailto:ivana.kraiselburd@uk-essen.de" class="text-decoration-none text-reset"><i class="fas fa-envelope text-muted"></i> Ivana Kraiselburd</a><br>
+                        <a href="mailto:simon.magin@uk-essen.de" class="text-decoration-none text-reset"><i class="fas fa-envelope text-muted"></i> Simon Magin</a><br>
                     </p>
                 </div>
                 <div>
                     <p>
                         <strong>Head of Data Science Group</strong><br>
-                        <a href="mailto:folker.meyer@uk-essen.de" class="text-decoration-none text-reset"><i class="fa-solid fa-envelope text-muted"></i> Folker Meyer</a><br>
+                        <a href="mailto:folker.meyer@uk-essen.de" class="text-decoration-none text-reset"><i class="fas fa-envelope text-muted"></i> Folker Meyer</a><br>
                     </p>
                 </div>
             </div>

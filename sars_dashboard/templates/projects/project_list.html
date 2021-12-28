@@ -1,6 +1,6 @@
 {% extends 'projects/base.html' %}
 
-{% block nav_reports %}active{% endblock nav_reports %}
+{% block nav %}{% with selected='projects' %}{{ block.super }}{% endwith %}{% endblock %}
 
 {% block inner %}
 <h1>Projects</h1>
@@ -11,10 +11,10 @@
 
 <!-- cards -->
 <p>
-    <div class="row row-cols-1 row-cols-md-2 g-3">
+    <div class="row row-cols-1 row-cols-md-2">
         {% for project in object_list %}
-            <div class="col">
-                <div class="card box-shadow">
+            <div class="col p-0">
+                <div class="card box-shadow m-2">
                     <!-- Maybe add images later -->
                     <!-- <img src="..." class="card-img-top" alt="..."> -->
                     <div class="card-body">
@@ -27,13 +27,13 @@
                             <small>
                                 <div>
                                     <a class="card-title test-title text-decoration-none text-reset mx-1" href="{% url 'reports:create'%}">
-                                        <i class="fa-solid fa-plus text-muted"></i>
+                                        <i class="fas fa-plus text-muted"></i>
                                     </a>
                                     <a class="card-title test-title text-decoration-none text-reset mx-1" href="{% url 'projects:update' project.id %}">
-                                        <i class="fa-solid fa-pen text-muted"></i>
+                                        <i class="fas fa-pen text-muted"></i>
                                     </a>
                                     <a class="card-title test-title text-decoration-none text-reset mx-1" href="{% url 'projects:delete' project.id %}">
-                                        <i class="fa-solid fa-trash text-muted"></i>
+                                        <i class="fas fa-trash text-muted"></i>
                                     </a>
                                 </div>
                             </small>

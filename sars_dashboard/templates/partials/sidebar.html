@@ -1,0 +1,143 @@
+{% load i18n %}<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center mt-3" href="{% url 'home' %}">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-virus"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Sequencing Dashboard</div>
+    </a>
+
+    <ul class="nav nav-pills flex-column mb-5 pt-4">
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item {% if selected == 'dashboard' %}active{% endif %}">
+            <a class="nav-link {% if selected == 'dashboard' %}active{% endif %}" href="{% url 'home' %}">
+                <i class="fas fa-fw fa-columns"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item {% if selected == 'runs' %}active{% endif %}">
+            <a class="nav-link {% if selected == 'runs' %}active{% endif %}" href="{% url 'run' %}">
+                <i class="fas fa-fw fa-bars"></i>
+                <span>Runs</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#reportDropdown"
+            aria-expanded="true" aria-controls="reportDropdown">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Projects</span>
+        </a>
+        <div id="reportDropdown" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="collapse-inner rounded text-white">
+                <a href="{% url 'projects:list'  %}" class="collapse-item py-1 {% if selected == 'projects' %}text-white active{% else %}text-muted{% endif %}">Overview</a>
+                {% for pro in projects_context %}
+                    <a href="{% url 'projects:detail' pro.pk  %}" class="collapse-item py-1 {% if project.pk ==  pro.pk%}text-white active{% else %}text-muted{% endif %}">{{ pro.title }}</a>
+                {% empty %}
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'projects:create' %}" class="collapse-item">Add a project...</a></li>
+                    {% else %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        </li>
+
+    </ul>
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+    <!-- Quick Links -->
+    <small>
+        <div class="sidebar-heading pb-2">
+            Quick Links
+        </div>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link py-2 {% if selected == 'about' %}text-white{% else %}text-muted{% endif %}" href="{% url 'about' %}">
+                    About
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link py-2 {% if selected == 'contact' %}text-white{% else %}text-muted{% endif %}" href="{% url 'contact' %}">
+                    Contact Us
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link py-2 {% if selected == 'changelog' %}text-white{% else %}text-muted{% endif %}" href="#">
+                    Changelog
+                </a>
+            </li>
+        </ul>
+    </small>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- User -->
+    {% if request.user.is_authenticated %}
+    <li class="nav-item dropdown">
+        <a class="nav-link align-items-center text-white text-decoration-none" href="#" id="userDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-user"></i>
+            <span><strong>{{ user.username }}</strong></span>
+        </a>
+
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow "
+            aria-labelledby="userDropdown">
+
+            <a class="dropdown-item" href="{% url 'projects:create' %}">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                {% translate "New project" %}
+            </a>
+
+            <a class="dropdown-item" href="{% url 'reports:create' %}">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                {% translate "Upload report" %}
+            </a>
+
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" href="{% url 'users:detail' request.user.username  %}">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                {% translate "Profile" %}
+            </a>
+
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" href="{% url 'account_logout' %}">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                {% translate "Sign Out" %}
+            </a>
+        </div>
+    </li>
+    {% else %}
+    <li class="nav-item dropdown">
+        <a class="nav-link align-items-center text-white text-decoration-none" href="{% url 'account_login' %}">
+            <i class="fas fa-fw fa-user"></i>
+            <span><strong>{% translate "Sign In" %}</strong></span>
+        </a>
+    </li>
+    {% endif %}
+
+    <!-- End of User -->
+
+    <!-- Sidebar Message -->
+    <!-- <div class="sidebar-card d-none d-lg-flex">
+        <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+        <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+    </div> -->
+
+</ul>

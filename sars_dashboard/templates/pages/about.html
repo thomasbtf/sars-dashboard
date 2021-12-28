@@ -1,6 +1,6 @@
 {% extends "pages/base.html" %}
 
-{% block nav_about %}text-white{% endblock nav_about %}
+{% block nav %}{% with selected='about' %}{{ block.super }}{% endwith %}{% endblock %}
 
 {% block inner %}
     <h1>About</h1>
