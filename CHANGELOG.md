@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.6.0...v0.7.0) (2021-12-27)
+
+
+### Features
+
+* **frontend:** add report browsing ([#37](https://www.github.com/thomasbtf/sars-dashboard/issues/37)) ([b29d39a](https://www.github.com/thomasbtf/sars-dashboard/commit/b29d39a7ebf2a6e8830455c6f68d1d296fc20e69))
+
 ## [0.6.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.5.0...v0.6.0) (2021-12-26)
 
 
