@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.7.0...v0.8.0) (2021-12-28)
+
+
+### Features
+
+* **frontend:** add static files and dashboard template ([#39](https://www.github.com/thomasbtf/sars-dashboard/issues/39)) ([209d14c](https://www.github.com/thomasbtf/sars-dashboard/commit/209d14ca54ed7e357b02cf8b7e2e84192da94e9e))
+
 ## [0.7.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.6.0...v0.7.0) (2021-12-27)
 
 
