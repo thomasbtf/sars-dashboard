@@ -7,7 +7,6 @@ PYTHONPATH := `pwd`
 .PHONY: build
 build:
 	docker-compose -f local.yml build
-	docker-compose -f local.yml up
 
 .PHONY: start
 start:
