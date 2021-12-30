@@ -1,20 +1,25 @@
-{% extends 'projects/base_no_border.html' %}
+{% extends 'center_base.html' %}
+{% load static %}
 
-{% block inner %}
+{% block content %}
     {% if not project.reports.all %}
-    <div class="row">
-        <h1>Reports for Project {{project}}</h1>
-        <p class="lead text-muted">No report uploaded for this project yet.</p>
-        <p>
-            <a href="{% url 'reports:create' %}" class="btn btn-outline-primary">Add a report</a>
-        </p>
+    
+    <div class="row g-0 py-4">
+        <div class="col-md-6 offset-md-3">
+            <h1>Reports for Project {{project}}</h1>
+            <p class="lead text-muted">No report uploaded for this project yet.</p>
+            <p>
+                <a href="{% url 'reports:create' %}" class="btn btn-outline-primary">Add a report</a>
+            </p>
+        </div>
     </div>
-    {% endif %}
 
-    <div class="row">
+    {% else %}
+    
+    <div class="row h-100">
         <!-- iFrame -->
         <div class="col p-0">
-            <iframe class="iframe-preview" width="100%" height="100%" src="{{project.reports.first.reportindex.file.url}}"></iframe>
+            <iframe class="iframe-preview" width="100%" height="100%" frameBorder="0" src="{{project.reports.first.reportindex.file.url}}"></iframe>
         </div>
         <!-- End of iFrame -->
 
@@ -44,16 +49,22 @@
         </div>
         <!-- End of Report List -->
     </div>
-{% endblock %}
+    {% endif %}
+
+{% endblock content %}
 
 {% block inline_javascript %}
     <!-- iFrame src changer -->
     <script>
-        $(document).ready(function() {
-            $('.list-group-item').on('click', function(e) {
-                event.preventDefault();
-                $('.iframe-preview').attr('src', $(this).find('a').attr('href'));
+        window.addEventListener('DOMContentLoaded', () => {
+            $(document).ready(function() {
+                $('.list-group-item').on('click', function(e) {
+                    event.preventDefault();
+                    $('.iframe-preview').attr('src', $(this).find('a').attr('href'));
+                });
             });
         });
     </script>
+
+
 {% endblock %}

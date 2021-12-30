@@ -1,66 +1,62 @@
-{% extends 'projects/base.html' %}
+{% extends 'center_base.html' %}
 
 {% block nav %}{% with selected='projects' %}{{ block.super }}{% endwith %}{% endblock %}
 
 {% block inner %}
+
 <h1>Projects</h1>
 <p class="lead text-muted">Overview of sequencing projects.</p>
-<p>
+<p class="row pb-4 border-bottom">
     <a href="{% url 'projects:create' %}" class="btn btn-outline-primary">Add a project</a>
 </p>
 
 <!-- cards -->
-<p>
-    <div class="row row-cols-1 row-cols-md-2">
-        {% for project in object_list %}
-            <div class="col p-0">
-                <div class="card box-shadow m-2">
-                    <!-- Maybe add images later -->
-                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5>
-                                <a class="card-title test-title text-decoration-none text-reset" href="{% url 'projects:detail' project.id %}">
-                                    {{ project.title }}
-                                </a>
-                            </h5>
-                            <small>
-                                <div>
-                                    <a class="card-title test-title text-decoration-none text-reset mx-1" href="{% url 'reports:create'%}">
-                                        <i class="fas fa-plus text-muted"></i>
-                                    </a>
-                                    <a class="card-title test-title text-decoration-none text-reset mx-1" href="{% url 'projects:update' project.id %}">
-                                        <i class="fas fa-pen text-muted"></i>
-                                    </a>
-                                    <a class="card-title test-title text-decoration-none text-reset mx-1" href="{% url 'projects:delete' project.id %}">
-                                        <i class="fas fa-trash text-muted"></i>
-                                    </a>
-                                </div>
-                            </small>
-                        </div>
-                        <small class="card-subtitle mb-2 text-muted">
-                            {{ project.description }}
-                        </small>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center m-3">
-                        <div class="btn-group">
-                            <a class="btn btn btn-sm btn-outline-secondary" href="{% url 'projects:detail' project.id %}" role="button">
-                            {% if project.reports.count == 1 %}
-                                {{ project.reports.count }} Report
-                            {% else %}
-                                {{ project.reports.count }} Reports
-                            {% endif %}
+<div class="row pt-2">
+    {% for project in object_list %}
+        <div class="col-xl-6 col-lg-5">
+            <div class="card shadow mb-4">
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        {{ project.title }}
+                    </h6>
+                    <small>
+                        <div>
+                            <a class="card-title test-title text-decoration-none text-reset mx-2" href="{% url 'reports:create'%}">
+                                <i class="fas fa-plus text-muted"></i>
+                            </a>
+                            <a class="card-title test-title text-decoration-none text-reset mx-2" href="{% url 'projects:update' project.id %}">
+                                <i class="fas fa-pen text-muted"></i>
+                            </a>
+                            <a class="card-title test-title text-decoration-none text-reset mx-2" href="{% url 'projects:delete' project.id %}">
+                                <i class="fas fa-trash text-muted"></i>
                             </a>
                         </div>
-                        <small class="text-muted">
-                            {% if project.reports.first %}
-                                last update: {{ project.reports.first.uploaded_at|date:"d.m.Y" }}
-                            {% endif %}
-                        </small>
+                    </small>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    {{ project.description }}
+                </div>
+                <div class="d-flex justify-content-between align-items-center m-3">
+                    <div class="btn-group">
+                        <a class="btn btn btn-sm btn-outline-secondary" href="{% url 'projects:detail' project.id %}" role="button">
+                        {% if project.reports.count == 1 %}
+                            {{ project.reports.count }} Report
+                        {% else %}
+                            {{ project.reports.count }} Reports
+                        {% endif %}
+                        </a>
                     </div>
+                    <small class="text-muted">
+                        {% if project.reports.first %}
+                            last update: {{ project.reports.first.uploaded_at|date:"d.m.Y" }}
+                        {% endif %}
+                    </small>
                 </div>
             </div>
-        {% endfor %}
-    </div>
-</p>
+        </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
