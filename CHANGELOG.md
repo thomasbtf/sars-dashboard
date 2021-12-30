@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.8.1](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.8.0...v0.8.1) (2021-12-30)
+
+
+### Bug Fixes
+
+* **frontend:** spacing, etc ([#42](https://www.github.com/thomasbtf/sars-dashboard/issues/42)) ([247222c](https://www.github.com/thomasbtf/sars-dashboard/commit/247222c7bfe7ab62653d29897dde54189102dbe2))
+
 ## [0.8.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.7.0...v0.8.0) (2021-12-28)
 
 
