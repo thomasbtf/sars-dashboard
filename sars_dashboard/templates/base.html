@@ -37,12 +37,6 @@
         <!-- Custom scripts for all pages-->{% compress js %}
         <script defer src="{% static 'js/sb-admin-2.js' %}"></script>{% endcompress %}
 
-        <!-- Page level plugins -->
-        <script defer src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
-
-        <!-- Page level custom scripts -->
-        <script defer src="{% static 'js/demo/chart-area-demo.js' %}"></script>
-        <script defer src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
     {% endblock javascript %}
 
 </head>
@@ -79,12 +73,9 @@
                 <!-- End of messages -->
 
                 <!-- Begin Page Content -->
-                <!-- <div class="container-fluid"> -->
                     {% block content %}
                     {% endblock content %}
-                <!-- </div> -->
-                <!-- /.container-fluid -->
-
+                <!-- End Page Content -->
 
             </div>
             <!-- End of Main Content -->
@@ -115,7 +106,7 @@
     with a "defer" so that you run run inline code:
     <script>
         window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
-        </script>
+    </script>
     {% endcomment %}
     {% endblock inline_javascript %}
     <!-- End of Inline JavaScript -->
