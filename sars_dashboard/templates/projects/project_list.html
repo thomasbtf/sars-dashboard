@@ -1,14 +1,15 @@
-{% extends 'center_base.html' %}
+{% extends 'content_base.html' %}
 
 {% block nav %}{% with selected='projects' %}{{ block.super }}{% endwith %}{% endblock %}
 
 {% block inner %}
 
-<h1>Projects</h1>
-<p class="lead text-muted">Overview of sequencing projects.</p>
-<p class="row pb-4 border-bottom">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0">Projects</h1>
+    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
     <a href="{% url 'projects:create' %}" class="btn btn-outline-primary">Add a project</a>
-</p>
+</div>
 
 <!-- cards -->
 <div class="row pt-2">
@@ -45,6 +46,13 @@
                             {{ project.reports.count }} Report
                         {% else %}
                             {{ project.reports.count }} Reports
+                        {% endif %}
+                        </a>
+                        <a class="btn btn btn-sm btn-outline-secondary disabled" href="#" role="button">
+                        {% if project.samples.count == 1 %}
+                            {{ project.samples.count }} Sample
+                        {% else %}
+                            {{ project.samples.count }} Samples
                         {% endif %}
                         </a>
                     </div>

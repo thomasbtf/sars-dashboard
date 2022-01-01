@@ -1,0 +1,28 @@
+{% extends 'center_base.html' %}
+{% load static %}
+
+{% block inner %}
+    <h1>Pangolin Call {{ object.pk }}</h1>
+    <p class="btn-group row pb-4 border-bottom">
+        <a href="{% url 'calls:pango-update'  object.pk %}" class="btn btn-outline-primary">Update</a>
+        <a href="{% url 'calls:pango-delete' object.pk %}" class="btn btn-outline-primary">Delete</a>
+    </p>
+
+    <p>
+        taxon: {{ object.taxon }}<br>
+        lineage: {{ object.lineage }}<br>
+        conflict: {{ object.conflict }}<br>
+        ambiguity_score: {{ object.ambiguity_score }}<br>
+        scorpio_call: {{ object.scorpio_call }}<br>
+        scorpio_support: {{ object.scorpio_support }}<br>
+        scorpio_conflict: {{ object.scorpio_conflict }}<br>
+        version: {{ object.version }}<br>
+        pangolin_version: {{ object.pangolin_version }}<br>
+        pangoLEARN_version: {{ object.pangoLEARN_version }}<br>
+        pango_version: {{ object.pango_version }}<br>
+        status: {{ object.status }}<br>
+        note: {{ object.note }}<br>
+
+    </p>
+
+{% endblock %}

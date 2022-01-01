@@ -1,0 +1,56 @@
+{% extends 'content_base.html' %}
+{% load static %}
+
+{% block inner %}
+
+    <h1>Calls</h1>
+    <p class="lead text-muted">Overview of all Pangolin Calls.</p>
+
+    <p class="btn-group row pb-4 border-bottom">
+        <a href="{% url 'calls:pango-create' %}" class="btn btn-outline-primary">Add a lineage call</a>
+        <a href="#}" class="btn btn-outline-primary">Add a variant call</a>
+    </p>
+
+
+    <div class="table-responsive">
+        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <div class="row"><div class="col-sm-12">
+            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Number: activate to sort column descending">#</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Project: activate to sort column ascending">Sample</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Date Modified: activate to sort column ascending">Date Modified</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Date Created: activate to sort column ascending">Date Created</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for call in object_list %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'calls:pango-detail' call.id %}">{{ call.id }}</a>
+                            </td>
+                            <td>{{ call.sample }}</td>
+                            <td>{{ call.date_modified }}</td>
+                            <td>{{ call.creation_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block inline_javascript %}
+    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+    <!-- Page level plugins -->
+    <script defer src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script defer src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script defer src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+{% endblock %}

@@ -81,6 +81,8 @@ LOCAL_APPS = [
     "sars_dashboard.users",
     "sars_dashboard.projects",
     "sars_dashboard.reports",
+    "sars_dashboard.samples",
+    "sars_dashboard.calls",
     # Your stuff: custom apps go here
 ]
 
@@ -191,6 +193,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "sars_dashboard.projects.context_processors.projects",
+                "sars_dashboard.calls.context_processors.count_pango_calls",
             ],
         },
     }

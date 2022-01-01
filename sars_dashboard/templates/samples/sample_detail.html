@@ -1,0 +1,25 @@
+{% extends 'center_base.html' %}
+{% load static %}
+
+{% block inner %}
+
+    <h1>Sample {{ object.pk }}</h1>
+    <p class="btn-group row pb-4 border-bottom">
+        <a href="{% url 'samples:update'  object.pk %}" class="btn btn-outline-primary">Update</a>
+        <a href="{% url 'calls:pango-create' %}" class="btn btn-outline-primary">Add lineage call</a>
+        <a href="{% url 'samples:delete' object.pk %}" class="btn btn-outline-primary">Delete</a>
+    </p>
+    <div>
+        Name: {{ object }}<br>
+        Project: {{ object.project }}<br>
+        Date: {{ object.date }}<br>
+        Creation Date: {{ object.creation_date }}<br>
+        Modification Date: {{ object.date_modified }}<br>
+    </div>
+
+    {{ objects.calls }}
+
+
+
+
+{% endblock inner %}

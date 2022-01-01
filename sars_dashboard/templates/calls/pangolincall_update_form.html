@@ -1,0 +1,18 @@
+{% extends 'center_base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block inner %}
+    <h1>Update Pangolin Call {{ object }}</h1>
+    {% if request.user.is_authenticated %}
+        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-success">Update</button>
+            <a class="btn btn-danger" href="{% url 'calls:pango-detail' object.pk %}">Return to call</a>
+        </form>
+    {% else %}
+        <p>You must be logged in to create a project.</p>
+        <a class="btn btn-danger" href="{% url 'home' %}">Return to home</a>
+    {% endif %}
+{% endblock %}
