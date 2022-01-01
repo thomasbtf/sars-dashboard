@@ -24,8 +24,10 @@ urlpatterns = [
     path("users/", include("sars_dashboard.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-    path("projects/", include("sars_dashboard.projects.urls", namespace="projects")),
-    path("reports/", include("sars_dashboard.reports.urls", namespace="reports")),
+    path("project/", include("sars_dashboard.projects.urls", namespace="projects")),
+    path("report/", include("sars_dashboard.reports.urls", namespace="reports")),
+    path("sample/", include("sars_dashboard.samples.urls", namespace="samples")),
+    path("calls/", include("sars_dashboard.calls.urls", namespace="calls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
     # Static file serving when using Gunicorn + Uvicorn for local web socket development
