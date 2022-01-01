@@ -1,10 +1,7 @@
 from django.db import models
-
-from sars_dashboard.samples.models import Sample
 from django.utils.translation import gettext_lazy as _
 
-from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models import CheckConstraint, Q
+from sars_dashboard.samples.models import Sample
 
 
 class MinMaxFloat(models.FloatField):
@@ -13,17 +10,20 @@ class MinMaxFloat(models.FloatField):
         super(MinMaxFloat, self).__init__(*args, **kwargs)
 
     def formfield(self, **kwargs):
-        defaults = {'min_value': self.min_value, 'max_value' : self.max_value}
+        defaults = {"min_value": self.min_value, "max_value": self.max_value}
         defaults.update(kwargs)
         return super(MinMaxFloat, self).formfield(**defaults)
 
 
 class Call(models.Model):
-    sample = models.ForeignKey(Sample, on_delete=models.CASCADE,
+    sample = models.ForeignKey(
+        Sample,
+        on_delete=models.CASCADE,
         blank=True,
         null=True,
         related_name="calls",
-        verbose_name=_("Call"),)
+        verbose_name=_("Call"),
+    )
     date_modified = models.DateTimeField(auto_now=True)
     creation_date = models.DateTimeField(auto_now_add=True)
 

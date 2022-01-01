@@ -14,7 +14,7 @@ class PangolinCallListView(ListView):
 
 class PangolinCallCreateView(CreateView):
     model = PangolinCall
-    fields = ("__all__")
+    fields = "__all__"
 
     def get_success_url(self):
         return reverse("calls:pango-detail", kwargs={"pk": self.object.pk})
@@ -26,7 +26,7 @@ class PangolinCallDetailView(DetailView):
 
 class PangolinCallUpdateView(UpdateView):
     model = PangolinCall
-    fields = ("__all__")
+    fields = "__all__"
     template_name_suffix = "_update_form"
 
 

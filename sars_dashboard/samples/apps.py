@@ -6,4 +6,3 @@ class ReportsConfig(AppConfig):
     name = "sars_dashboard.samples"
     verbose_name = _("Samples")
     default_auto_field = "django.db.models.BigAutoField"
-

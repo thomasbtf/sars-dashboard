@@ -9,4 +9,4 @@ from .serializers import SampleSerializer
 class SampleViewSet(ModelViewSet):
     queryset = Sample.objects.all()
     serializer_class = SampleSerializer
-    lookup_field = 'name'
+    lookup_field = "name"
