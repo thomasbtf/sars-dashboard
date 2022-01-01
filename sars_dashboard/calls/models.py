@@ -12,7 +12,7 @@ class MinMaxFloat(models.FloatField):
     def formfield(self, **kwargs):
         defaults = {"min_value": self.min_value, "max_value": self.max_value}
         defaults.update(kwargs)
-        return super(MinMaxFloat, self).formfield(**defaults)
+        return super().formfield(**defaults)
 
 
 class Call(models.Model):
