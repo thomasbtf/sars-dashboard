@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.8.2](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.8.1...v0.8.2) (2021-12-30)
+
+
+### Bug Fixes
+
+* **frontend:** run status, makefile ([#44](https://www.github.com/thomasbtf/sars-dashboard/issues/44)) ([0674fbd](https://www.github.com/thomasbtf/sars-dashboard/commit/0674fbd31c968bb949f4c3c88612881f4150ed77))
+
 ### [0.8.1](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.8.0...v0.8.1) (2021-12-30)
 
 
