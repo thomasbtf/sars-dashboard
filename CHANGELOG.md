@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.9.0...v0.10.0) (2022-01-01)
+
+
+### Features
+
+* add makemigrations to makefile ([#48](https://www.github.com/thomasbtf/sars-dashboard/issues/48)) ([7a6fb4b](https://www.github.com/thomasbtf/sars-dashboard/commit/7a6fb4be773990cefe3f55f1df827a48f991ec20))
+
 ## [0.9.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.8.2...v0.9.0) (2022-01-01)
 
 
