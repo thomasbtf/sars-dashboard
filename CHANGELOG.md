@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.8.2...v0.9.0) (2022-01-01)
+
+
+### Features
+
+* **backend:** add samples and calls ([#46](https://www.github.com/thomasbtf/sars-dashboard/issues/46)) ([8a471d8](https://www.github.com/thomasbtf/sars-dashboard/commit/8a471d8ddd9e62b4e0c0492fc0d00c8ef5c85e8f))
+
 ### [0.8.2](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.8.1...v0.8.2) (2021-12-30)
 
 
