@@ -16,6 +16,10 @@ start:
 superuser:
 	docker-compose -f local.yml run --rm django python manage.py createsuperuser
 
+.PHONY: makemigrations
+makemigrations:
+	docker-compose -f local.yml run --rm django python manage.py makemigrations $(app)
+
 .PHONY: migrations
 migrations:
 	docker-compose -f local.yml run --rm django python manage.py makemigrations $(app)
