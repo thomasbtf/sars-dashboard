@@ -83,6 +83,7 @@ LOCAL_APPS = [
     "sars_dashboard.reports",
     "sars_dashboard.samples",
     "sars_dashboard.calls",
+    "sars_dashboard.dashboards",
     # Your stuff: custom apps go here
 ]
 

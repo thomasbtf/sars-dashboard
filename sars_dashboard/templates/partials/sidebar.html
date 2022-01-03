@@ -39,7 +39,7 @@
                     <a href="{% url 'projects:detail' pro.pk  %}" class="collapse-item py-1 {% if project.pk ==  pro.pk%}text-white active{% else %}text-muted{% endif %}">{{ pro.title }}</a>
                 {% empty %}
                     {% if request.user.is_authenticated %}
-                        <a href="{% url 'projects:create' %}" class="collapse-item">Add a project...</a></li>
+                    <a href="{% url 'projects:create' %}" class="collapse-item py-1 text-muted">Add a project...</a>
                     {% else %}
                     {% endif %}
                 {% endfor %}
