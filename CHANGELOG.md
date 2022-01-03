@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.10.0...v0.11.0) (2022-01-03)
+
+
+### Features
+
+* **frontend:** add dashboard plots with plotly ([#50](https://www.github.com/thomasbtf/sars-dashboard/issues/50)) ([aca5955](https://www.github.com/thomasbtf/sars-dashboard/commit/aca5955fb9609e4e66013e4f19afef16503e3f11))
+
 ## [0.10.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.9.0...v0.10.0) (2022-01-01)
 
 
