@@ -12,6 +12,10 @@ build:
 start:
 	docker-compose -f local.yml up
 
+.PHONY: startd
+startd:
+	docker-compose -f local.yml up -d
+
 .PHONY: superuser
 superuser:
 	docker-compose -f local.yml run --rm django python manage.py createsuperuser

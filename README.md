@@ -10,16 +10,16 @@ The steps below will get you up and running with a local development environment
 
 ## Prerequisites
 
-- Docker; if you don’t have it yet, follow the installation instructions;
-- Docker Compose; refer to the official documentation for the installation guide.
-- Pre-commit; refer to the official documentation for the [pre-commit](https://pre-commit.com/#install).
+- [Docker](https://docs.docker.com/get-docker/); if you don’t have it yet, follow the installation instructions;
+- [Docker Compose](https://docs.docker.com/compose/install/); refer to the official documentation for the installation guide.
+- [Pre-commit](https://pre-commit.com/#install); for clean code .
 
 ## Build the Stack
 
 This can take a while, especially the first time you run this particular command on your development system:
 
 ```bash
-docker-compose -f local.yml build
+make build
 ```
 
 Generally, if you want to emulate production environment use production.yml instead. And this is true for any other actions you might need to perform: whenever a switch is required, just do it!
@@ -45,13 +45,13 @@ This brings up both Django and PostgreSQL. The first time it is run it might tak
 Open a terminal at the project root and run the following for local development:
 
 ```bash
-docker-compose -f local.yml up
+make start
 ```
 
 To run in a detached (background) mode, just:
 
 ```bash
-docker-compose up -d
+make startd
 ```
 
 ### Execute Management Commands
@@ -59,8 +59,9 @@ docker-compose up -d
 As with any shell command that we wish to run in our container, this is done using the `docker-compose -f local.yml run --rm` command:
 
 ```bash
-docker-compose -f local.yml run --rm django python manage.py migrate
 docker-compose -f local.yml run --rm django python manage.py createsuperuser
 ```
 
 Here, django is the target service we are executing the commands against.
+
+See the make file for predefined management commands.
