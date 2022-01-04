@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.12.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.11.0...v0.12.0) (2022-01-04)
+
+
+### Features
+
+* **frontend:** add data table on sars dashboard ([#54](https://www.github.com/thomasbtf/sars-dashboard/issues/54)) ([b1e6a1d](https://www.github.com/thomasbtf/sars-dashboard/commit/b1e6a1d20ed6c7d282ea6b06a45f0d2a97182c2f))
+
+
+### Bug Fixes
+
+* **frontend:** rmv fixed height of plots ([#52](https://www.github.com/thomasbtf/sars-dashboard/issues/52)) ([8b006c4](https://www.github.com/thomasbtf/sars-dashboard/commit/8b006c41a25fcdc8aa48d7291d16b9755430e542))
+
 ## [0.11.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.10.0...v0.11.0) (2022-01-03)
 
 
