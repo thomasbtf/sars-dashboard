@@ -28,6 +28,10 @@ class Report(models.Model):
     zip_file = models.FileField(upload_to="report-zipped")
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ["-date"]
+
+
     def __str__(self):
         return self.zip_file.name.removesuffix(".zip")
 

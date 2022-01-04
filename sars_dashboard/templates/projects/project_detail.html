@@ -27,9 +27,9 @@
         <div class="col-auto p-0">
             <ul class="list-group">
             {% for report in project.reports.all %}
-            <li class="list-group-item d-flex justify-content-between align-items-center">
+            <li class="list-group-item d-flex justify-content-between align-items-center text-muted">
                 {% if report.index.first.file %}
-                <a href="{{report.index.first.file.url}}" class="text-decoration-none" target="reportframe">{{ report.date|date:"d.m.Y" }}</a>
+                <a href="{{report.index.first.file.url}}" class="text-decoration-none text-muted linkChanger" target="reportframe">{{ report.date|date:"d.m.Y" }}</a>
                 <div class="mx-2">
                     <small>
                         <a href="{{report.index.first.file.url}}" class="mx-1 text-decoration-none">
@@ -52,3 +52,21 @@
     {% endif %}
 
 {% endblock content %}
+
+{% block inline_javascript %}
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('DOMContentLoaded');
+            $(document).ready(function() {
+                $(".linkChanger").on('click', function(){
+                    console.log("clicked");
+                    // remove classname 'active' from all li who already has classname 'active'
+                    $(".linkChanger").addClass("text-muted");
+                    // adding classname 'active' to current click li 
+                    $(this).removeClass("text-muted");
+                });
+            });
+            
+        });
+    </script>
+{% endblock inline_javascript %}
