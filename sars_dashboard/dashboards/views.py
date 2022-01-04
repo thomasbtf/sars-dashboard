@@ -31,7 +31,7 @@ class SarsDashboardView(TemplateView):
             context["processed_samples"] = samples_of_project.count()
 
         calls_of_project = PangolinCall.objects.filter(sample__in=samples_of_project)
-        if len(calls_of_project) == 0:
+        if not calls_of_project.exists():
             context["over_time_plot"] = no_data
             context["table"] = no_data
             context["unique_calls"] = "-"
