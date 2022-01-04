@@ -60,13 +60,11 @@
             $(document).ready(function() {
                 $(".linkChanger").on('click', function(){
                     console.log("clicked");
-                    // remove classname 'active' from all li who already has classname 'active'
                     $(".linkChanger").addClass("text-muted");
-                    // adding classname 'active' to current click li 
                     $(this).removeClass("text-muted");
                 });
             });
-            
+
         });
     </script>
 {% endblock inline_javascript %}

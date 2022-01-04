@@ -31,7 +31,6 @@ class Report(models.Model):
     class Meta:
         ordering = ["-date"]
 
-
     def __str__(self):
         return self.zip_file.name.removesuffix(".zip")
 
