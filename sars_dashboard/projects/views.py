@@ -29,6 +29,9 @@ class ReportUpdateView(UpdateView):
     fields = ["title", "description"]
     template_name_suffix = "_update_form"
 
+    def get_success_url(self):
+        return reverse("projects:detail", kwargs={"pk": self.object.pk})
+
 
 class ReportDeleteView(DeleteView):
     model = Project

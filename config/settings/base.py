@@ -194,7 +194,6 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "sars_dashboard.projects.context_processors.projects",
-                "sars_dashboard.calls.context_processors.count_pango_calls",
             ],
         },
     }
