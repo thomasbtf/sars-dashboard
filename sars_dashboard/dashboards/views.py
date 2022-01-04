@@ -3,9 +3,7 @@ import plotly.express as px
 from django.views.generic.base import TemplateView
 from plotly.offline import plot
 
-from sars_dashboard import projects, samples
 from sars_dashboard.calls.models import PangolinCall
-from sars_dashboard.projects import context_processors
 from sars_dashboard.projects.models import Project
 from sars_dashboard.samples.models import Sample
 from sars_dashboard.voc_definitions import VOCS
@@ -81,7 +79,10 @@ class SarsDashboardView(TemplateView):
         table = table.astype(int)
 
         table = table.to_html(
-            classes='table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" style="width: 100%;',
+            classes=(
+                'table table-bordered dataTable" id="dataTable" width="100%" '
+                'cellspacing="0" role="grid" style="width: 100%;'
+            ),
             index=False,
             index_names=False,
             justify="center",
