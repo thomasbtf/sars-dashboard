@@ -25,7 +25,7 @@ class SarsDashboardView(TemplateView):
 
         samples_of_project = Sample.objects.filter(project=first_project)
 
-        if samples_of_project.count() == 0:
+        if not samples_of_project.exists():
             context["processed_samples"] = "-"
         else:
             context["processed_samples"] = samples_of_project.count()
