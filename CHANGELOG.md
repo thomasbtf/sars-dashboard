@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.13.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.12.0...v0.13.0) (2022-01-04)
+
+
+### Features
+
+* **dep:** bump GoogleCloudPlatform/release-please-action from 2 to 3 ([#41](https://github.com/thomasbtf/sars-dashboard/issues/41)) ([d71d2e9](https://github.com/thomasbtf/sars-dashboard/commit/d71d2e94a12de4e0f5fede6d8bb994c8412064ed))
+
+
+### Bug Fixes
+
+* **backend:** extraction of report files ([#58](https://github.com/thomasbtf/sars-dashboard/issues/58)) ([9b08634](https://github.com/thomasbtf/sars-dashboard/commit/9b086348362027b936140c8ac4c2ae2fd0712d42))
+
 ## [0.12.0](https://www.github.com/thomasbtf/sars-dashboard/compare/v0.11.0...v0.12.0) (2022-01-04)
 
 
