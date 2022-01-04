@@ -29,6 +29,9 @@ class PangolinCallUpdateView(UpdateView):
     fields = "__all__"
     template_name_suffix = "_update_form"
 
+    def get_success_url(self):
+        return reverse("calls:pango-detail", kwargs={"pk": self.object.pk})
+
 
 class PangolinCallDeleteView(DeleteView):
     model = PangolinCall

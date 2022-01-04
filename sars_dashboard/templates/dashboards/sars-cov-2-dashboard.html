@@ -23,7 +23,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Last Update</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ projects_context.first.samples.first.creation_date|date }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ last_update }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -40,7 +40,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                             Samples Processed</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ projects_context.first.samples.count }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ processed_samples }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-vials fa-2x text-gray-300"></i>
@@ -57,7 +57,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Unique Lineages</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ unique_pangolin_calls }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ unique_calls }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-viruses fa-2x text-gray-300"></i>
@@ -137,326 +137,15 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Run Dashboard</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Tabular Overview</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <div class="row"><div class="col-sm-12">
-                        <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                            <thead>
-                                <tr role="row">
-                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Week</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Alpha (B.1.1.7)</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Delta (B.1.617.2)</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Delta subtypes (AY.* )</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Omicron (B.1.1.529)</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Omicron subtypes (BA.*)</th>
-                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Other</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th rowspan="1" colspan="1"></th>
-                                    <th rowspan="1" colspan="1">999</th>
-                                    <th rowspan="1" colspan="1">999</th>
-                                    <th rowspan="1" colspan="1">999</th>
-                                    <th rowspan="1" colspan="1">999</th>
-                                    <th rowspan="1" colspan="1">999</th>
-                                    <th rowspan="1" colspan="1">999</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                            <tr class="odd">
-                                    <td class="sorting_1">01</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="sorting_1">02</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{ table | safe }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -468,20 +157,24 @@
 {% endblock inner %}
 
 {% block inline_javascript %}
-    <!-- Page level plugins -->
-    <script defer src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
-
-    <!-- Page level custom scripts -->
-    <script defer src="{% static 'js/demo/chart-area-demo.js' %}"></script>
-    <script defer src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
-
     <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
 
     <!-- Page level plugins -->
     <script defer src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
     <script defer src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
 
-    <!-- Page level custom scripts -->
-    <script defer src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+
+            console.log('DOM loaded');
+            $(document).ready(function() {
+                console.log('ready');
+                $('#dataTable').DataTable();
+
+            });
+
+        });
+    </script>
 
 {% endblock %}
