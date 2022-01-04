@@ -28,6 +28,9 @@ migrations:
 .PHONY: flush
 flush:
 	docker-compose -f local.yml run --rm django python manage.py flush
+	find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+	find . -path "*/migrations/*.pyc"  -delete
+	rm -rf sars_dashboard/media
 
 .PHONY: app
 app:
