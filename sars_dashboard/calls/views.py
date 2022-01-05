@@ -1,4 +1,3 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -9,7 +8,7 @@ from sars_dashboard.mixins import AdminOrStaffRequiredMixin
 
 
 # Create your views here.
-class PangolinCallListView(LoginRequiredMixin, ListView):
+class PangolinCallListView(AdminOrStaffRequiredMixin, ListView):
     model = PangolinCall
     paginate_by = 100  # if pagination is desired
 
@@ -22,7 +21,7 @@ class PangolinCallCreateView(AdminOrStaffRequiredMixin, CreateView):
         return reverse("calls:pango-detail", kwargs={"pk": self.object.pk})
 
 
-class PangolinCallDetailView(LoginRequiredMixin, DetailView):
+class PangolinCallDetailView(AdminOrStaffRequiredMixin, DetailView):
     model = PangolinCall
 
 

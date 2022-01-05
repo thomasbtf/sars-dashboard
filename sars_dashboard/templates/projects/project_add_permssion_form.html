@@ -1,0 +1,18 @@
+{% extends 'center_base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block inner %}
+    <h1>Add a Viewing Permission for Project {{ project.title }}</h1>
+    {% if request.user.is_staff or request.user.is_superuser %}
+        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-success">Add permission</button>
+            <a class="btn btn-danger" href="{% url 'projects:list' %}">Return to projects</a>
+        </form>
+    {% else %}
+        <p>You must be logged in to create a permission.</p>
+        <a class="btn btn-danger" href="{% url 'home' %}">Return to home</a>
+    {% endif %}
+{% endblock %}

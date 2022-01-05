@@ -2,9 +2,10 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models import CharField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from guardian.mixins import GuardianUserMixin
 
 
-class User(AbstractUser):
+class User(GuardianUserMixin, AbstractUser):
     """Default user for SARS-CoV-2 Dashboard."""
 
     #: First and last name do not cover name patterns around the globe
