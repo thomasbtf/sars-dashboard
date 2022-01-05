@@ -4,15 +4,17 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from sars_dashboard.projects.models import Project
+from sars_dashboard.mixins import AdminOrStaffRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
-class ReportListView(ListView):
+class ProjectListView(LoginRequiredMixin, ListView):
     model = Project
     paginate_by = 100  # if pagination is desired
 
 
-class ReportCreateView(CreateView):
+class ProjectCreateView(AdminOrStaffRequiredMixin, CreateView):
     model = Project
     fields = ["title", "description"]
 
@@ -20,11 +22,11 @@ class ReportCreateView(CreateView):
         return reverse("projects:detail", kwargs={"pk": self.object.pk})
 
 
-class ReportDetailView(DetailView):
+class ProjectDetailView(LoginRequiredMixin, DetailView):
     model = Project
 
 
-class ReportUpdateView(UpdateView):
+class ProjectUpdateView(AdminOrStaffRequiredMixin, UpdateView):
     model = Project
     fields = ["title", "description"]
     template_name_suffix = "_update_form"
@@ -33,6 +35,6 @@ class ReportUpdateView(UpdateView):
         return reverse("projects:detail", kwargs={"pk": self.object.pk})
 
 
-class ReportDeleteView(DeleteView):
+class ProjectDeleteView(AdminOrStaffRequiredMixin, DeleteView):
     model = Project
     success_url = reverse_lazy("projects:list")

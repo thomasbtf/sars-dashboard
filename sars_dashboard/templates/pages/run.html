@@ -8,131 +8,12 @@
 {% block inner %}
 
 
-    <h2 class="h3 mb-2">Run Surveillance</h2>
-    <div class="table-responsive">
-      <table class="table table-sm table-hover align-middle">
-        <thead class="thead-dark">
-          <tr>
-            <th>Run</th>
-            <th>Date</th>
-            <th>Project</th>
-            <th>Status</th>
-            <th>Progress</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>999</td>
-            <td>2021-12-31</td>
-            <td>Example</td>
-            <td>Queued</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar bg-info w-0" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>999</td>
-            <td>2021-12-31</td>
-            <td>Example</td>
-            <td>Testing</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar bg-info w-0" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>999</td>
-            <td>2021-12-31</td>
-            <td>Example</td>
-            <td>Running</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar bg-warning text-dark progress-bar-striped progress-bar-animated w-50 " role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>999</td>
-            <td>2021-12-31</td>
-            <td>Example</td>
-            <td>Running</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar bg-warning text-dark progress-bar-striped progress-bar-animated w-75 " role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>999</td>
-            <td>2021-12-31</td>
-            <td>Example</td>
-            <td>Finished</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar bg-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-          <tr>
-            <td>999</td>
-            <td>2021-12-31</td>
-            <td>Example</td>
-            <td>Failed</td>
-            <td>
-              <div class="progress">
-                <div class="progress-bar bg-danger w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </td>
-          </tr>
-          {% for run in object_list %}
-          <tr>
-            <td><a class="text-decoration-none text-reset" href="{% url 'workflow:run-details' run.id %}">{{ run.id }}</a></td>
-            <td><a class="text-decoration-none text-reset" href="{% url 'workflow:run-details' run.id %}">{{ run.date_created|date:'Y-m-d'}}</a></td>
-            <td><a class="text-decoration-none text-reset" href="{% url 'workflow:run-details' run.id %}">{{ run.workflow.name }}</a></td>
-            <td><a class="text-decoration-none text-reset" href="{% url 'workflow:run-details' run.id %}">{{ run.Status }}</a></td>
-            <td>
-              {% if run.Status == "Created" or run.Status == "Queued" %}
-                <div class="progress">
-                  <div class="progress-bar bg-info w-0" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              {% elif run.Status == "Testing" %}
-                <div class="progress">
-                  <div class="progress-bar bg-info w-100" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              {% elif run.Status == "Running" %}
-              <div class="progress">
-                <div class="progress-bar bg-info w-100" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50</div>
-              </div>
-              {% elif run.Status == "Generate Report" %}
-                <div class="progress">
-                  <div class="progress-bar bg-warning w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              {% elif run.Status == "Finished" %}
-                <div class="progress">
-                  <div class="progress-bar bg-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              {% elif run.Status == "Failed" %}
-                <div class="progress">
-                  <div class="progress-bar bg-danger w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              {% else %}
-                {{run.Status}}
-              {% endif %}
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+  <h2 class="h3 mb-2">Run Surveillance</h2>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Run Dashboard</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Status</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -140,83 +21,119 @@
                 <div class="row"><div class="col-sm-12">
                   <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                     <thead>
-                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 57px;">Name</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 61px;">Position</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 49px;">Office</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 31px;">Age</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 68px;">Start date</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 67px;">Salary</th></tr>
-                    </thead>
-                    <tfoot>
-                        <tr><th rowspan="1" colspan="1">Name</th><th rowspan="1" colspan="1">Position</th><th rowspan="1" colspan="1">Office</th><th rowspan="1" colspan="1">Age</th><th rowspan="1" colspan="1">Start date</th><th rowspan="1" colspan="1">Salary</th></tr>
-                    </tfoot>
-                    <tbody>
-                      <tr class="odd">
-                            <td class="sorting_1">Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>2008/11/28</td>
-                            <td>$162,700</td>
-                        </tr><tr class="even">
-                            <td class="sorting_1">Angelica Ramos</td>
-                            <td>Chief Executive Officer (CEO)</td>
-                            <td>London</td>
-                            <td>47</td>
-                            <td>2009/10/09</td>
-                            <td>$1,200,000</td>
-                        </tr><tr class="odd">
-                            <td class="sorting_1">Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                            <td>2009/01/12</td>
-                            <td>$86,000</td>
-                        </tr><tr class="even">
-                            <td class="sorting_1">Bradley Greer</td>
-                            <td>Software Engineer</td>
-                            <td>London</td>
-                            <td>41</td>
-                            <td>2012/10/13</td>
-                            <td>$132,000</td>
-                        </tr><tr class="odd">
-                            <td class="sorting_1">Brenden Wagner</td>
-                            <td>Software Engineer</td>
-                            <td>San Francisco</td>
-                            <td>28</td>
-                            <td>2011/06/07</td>
-                            <td>$206,850</td>
-                        </tr><tr class="even">
-                            <td class="sorting_1">Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>2012/12/02</td>
-                            <td>$372,000</td>
-                        </tr><tr class="odd">
-                            <td class="sorting_1">Bruno Nash</td>
-                            <td>Software Engineer</td>
-                            <td>London</td>
-                            <td>38</td>
-                            <td>2011/05/03</td>
-                            <td>$163,500</td>
-                        </tr><tr class="even">
-                            <td class="sorting_1">Caesar Vance</td>
-                            <td>Pre-Sales Support</td>
-                            <td>New York</td>
-                            <td>21</td>
-                            <td>2011/12/12</td>
-                            <td>$106,450</td>
-                        </tr><tr class="odd">
-                            <td class="sorting_1">Cara Stevens</td>
-                            <td>Sales Assistant</td>
-                            <td>New York</td>
-                            <td>46</td>
-                            <td>2011/12/06</td>
-                            <td>$145,600</td>
-                        </tr><tr class="even">
-                            <td class="sorting_1">Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>2012/03/29</td>
-                            <td>$433,060</td>
+                        <tr role="row">
+                          <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 57px;">Run</th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 61px;">Project</th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 49px;">Date</th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 31px;">Status</th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 68px;">Progress</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>999</td>
+                        <td>2021-12-31</td>
+                        <td>Example</td>
+                        <td>Queued</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-info w-0" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>999</td>
+                        <td>2021-12-31</td>
+                        <td>Example</td>
+                        <td>Testing</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-info w-0" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>999</td>
+                        <td>2021-12-31</td>
+                        <td>Example</td>
+                        <td>Running</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-warning text-dark progress-bar-striped progress-bar-animated w-50 " role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>999</td>
+                        <td>2021-12-31</td>
+                        <td>Example</td>
+                        <td>Running</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-warning text-dark progress-bar-striped progress-bar-animated w-75 " role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>999</td>
+                        <td>2021-12-31</td>
+                        <td>Example</td>
+                        <td>Finished</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                      <tr>
+                        <td>999</td>
+                        <td>2021-12-31</td>
+                        <td>Example</td>
+                        <td>Failed</td>
+                        <td>
+                          <div class="progress">
+                            <div class="progress-bar bg-danger w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      {% for run in object_list %}
+                      <tr>
+                        <td><a class="text-decoration-none text-reset" href="{% url 'workflow:run-details' run.id %}">{{ run.id }}</a></td>
+                        <td><a class="text-decoration-none text-reset" href="{% url 'workflow:run-details' run.id %}">{{ run.date_created|date:'Y-m-d'}}</a></td>
+                        <td><a class="text-decoration-none text-reset" href="{% url 'workflow:run-details' run.id %}">{{ run.workflow.name }}</a></td>
+                        <td><a class="text-decoration-none text-reset" href="{% url 'workflow:run-details' run.id %}">{{ run.Status }}</a></td>
+                        <td>
+                          {% if run.Status == "Created" or run.Status == "Queued" %}
+                            <div class="progress">
+                              <div class="progress-bar bg-info w-0" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          {% elif run.Status == "Testing" %}
+                            <div class="progress">
+                              <div class="progress-bar bg-info w-100" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          {% elif run.Status == "Running" %}
+                          <div class="progress">
+                            <div class="progress-bar bg-info w-100" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50</div>
+                          </div>
+                          {% elif run.Status == "Generate Report" %}
+                            <div class="progress">
+                              <div class="progress-bar bg-warning w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          {% elif run.Status == "Finished" %}
+                            <div class="progress">
+                              <div class="progress-bar bg-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          {% elif run.Status == "Failed" %}
+                            <div class="progress">
+                              <div class="progress-bar bg-danger w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          {% else %}
+                            {{run.Status}}
+                          {% endif %}
+                        </td>
+                      </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                 </div>
@@ -224,6 +141,7 @@
         </div>
     </div>
   </div>
+</div>
 
 <!--
   <div class="container-fluid p-4">

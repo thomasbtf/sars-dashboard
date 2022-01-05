@@ -17,6 +17,8 @@
             </a>
         </li>
 
+        {% if request.user.is_authenticated %}
+
         <!-- Nav Item - Dashboard -->
         <li class="nav-item {% if selected == 'runs' %}active{% endif %}">
             <a class="nav-link {% if selected == 'runs' %}active{% endif %}" href="{% url 'run' %}">
@@ -24,7 +26,7 @@
                 <span>Runs</span>
             </a>
         </li>
-
+        
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="collapse" data-target="#reportDropdown"
@@ -36,21 +38,22 @@
             <div class="collapse-inner rounded text-white">
                 <a href="{% url 'projects:list'  %}" class="collapse-item py-1 {% if selected == 'projects' %}text-white active{% else %}text-muted{% endif %}">Overview</a>
                 {% for pro in projects_context %}
-                    <a href="{% url 'projects:detail' pro.pk  %}" class="collapse-item py-1 {% if project.pk ==  pro.pk%}text-white active{% else %}text-muted{% endif %}">{{ pro.title }}</a>
+                <a href="{% url 'projects:detail' pro.pk  %}" class="collapse-item py-1 {% if project.pk ==  pro.pk%}text-white active{% else %}text-muted{% endif %}">{{ pro.title }}</a>
                 {% empty %}
-                    {% if request.user.is_authenticated %}
-                    <a href="{% url 'projects:create' %}" class="collapse-item py-1 text-muted">Add a project...</a>
-                    {% else %}
-                    {% endif %}
+                {% if request.user.is_staff or request.user.is_superuser %}
+                <a href="{% url 'projects:create' %}" class="collapse-item py-1 text-muted">Add a project...</a>
+                {% else %}
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
-        </li>
+    </li>
+    {% endif %}
 
     </ul>
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
+    <div class="text-center d-none d-md-inline mt-auto">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
@@ -97,17 +100,25 @@
         <div class="dropdown-menu dropdown-menu-right shadow "
             aria-labelledby="userDropdown">
 
-            <a class="dropdown-item" href="{% url 'projects:create' %}">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                {% translate "New project" %}
-            </a>
+            {% if request.user.is_staff or request.user.is_superuser %}
+                <a class="dropdown-item" href="{% url 'projects:create' %}">
+                    <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-400"></i>
+                    {% translate "New project" %}
+                </a>
 
-            <a class="dropdown-item" href="{% url 'reports:create' %}">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                {% translate "Upload report" %}
-            </a>
+                <a class="dropdown-item" href="{% url 'reports:create' %}">
+                    <i class="fas fa-file-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    {% translate "Upload report" %}
+                </a>
 
-            <div class="dropdown-divider"></div>
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="{% url 'admin:index'  %}">
+                    <i class="fas fa-hammer fa-sm fa-fw mr-2 text-gray-400"></i>
+                    {% translate "Admin Page" %}
+                </a>
+
+            {% endif %}
 
             <a class="dropdown-item" href="{% url 'users:detail' request.user.username  %}">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>

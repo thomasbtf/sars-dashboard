@@ -8,7 +8,9 @@
     <h1 class="h3 mb-0">Projects</h1>
     <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
         class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+    {% if request.user.is_staff or request.user.is_superuser %}
     <a href="{% url 'projects:create' %}" class="btn btn-outline-primary">Add a project</a>
+    {% endif %}
 </div>
 
 <!-- cards -->
@@ -21,19 +23,21 @@
                     <h6 class="m-0 font-weight-bold text-primary">
                         {{ project.title }}
                     </h6>
-                    <small>
-                        <div>
-                            <a class="card-title test-title text-decoration-none text-reset mx-2" href="{% url 'reports:create'%}">
-                                <i class="fas fa-plus text-muted"></i>
-                            </a>
-                            <a class="card-title test-title text-decoration-none text-reset mx-2" href="{% url 'projects:update' project.id %}">
-                                <i class="fas fa-pen text-muted"></i>
-                            </a>
-                            <a class="card-title test-title text-decoration-none text-reset mx-2" href="{% url 'projects:delete' project.id %}">
-                                <i class="fas fa-trash text-muted"></i>
-                            </a>
-                        </div>
-                    </small>
+                    {% if request.user.is_staff or request.user.is_superuser %}
+                        <small>
+                            <div>
+                                <a class="card-title test-title text-decoration-none text-reset mx-2" href="{% url 'reports:create'%}" data-toggle="tooltip" data-placement="top" title="Add report">
+                                    <i class="fas fa-file-alt text-muted"></i>
+                                </a>
+                                <a class="card-title test-title text-decoration-none text-reset mx-2" href="{% url 'projects:update' project.id %}" data-toggle="tooltip" data-placement="top" title="Edit project">
+                                    <i class="fas fa-pen text-muted"></i>
+                                </a>
+                                <a class="card-title test-title text-decoration-none text-reset mx-2" href="{% url 'projects:delete' project.id %}" data-toggle="tooltip" data-placement="top" title="Delete project">
+                                    <i class="fas fa-trash text-muted"></i>
+                                </a>
+                            </div>
+                        </small>
+                    {% endif %}
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -68,3 +72,14 @@
 </div>
 
 {% endblock %}
+
+{% block inline_javascript %}
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        });
+    </script>
+
+{% endblock inline_javascript %}

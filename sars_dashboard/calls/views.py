@@ -5,14 +5,16 @@ from django.views.generic.list import ListView
 
 from sars_dashboard.calls.models import PangolinCall
 
+from sars_dashboard.mixins import AdminOrStaffRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-class PangolinCallListView(ListView):
+class PangolinCallListView(LoginRequiredMixin, ListView):
     model = PangolinCall
     paginate_by = 100  # if pagination is desired
 
 
-class PangolinCallCreateView(CreateView):
+class PangolinCallCreateView(AdminOrStaffRequiredMixin, CreateView):
     model = PangolinCall
     fields = "__all__"
 
@@ -20,11 +22,11 @@ class PangolinCallCreateView(CreateView):
         return reverse("calls:pango-detail", kwargs={"pk": self.object.pk})
 
 
-class PangolinCallDetailView(DetailView):
+class PangolinCallDetailView(LoginRequiredMixin, DetailView):
     model = PangolinCall
 
 
-class PangolinCallUpdateView(UpdateView):
+class PangolinCallUpdateView(AdminOrStaffRequiredMixin, UpdateView):
     model = PangolinCall
     fields = "__all__"
     template_name_suffix = "_update_form"
@@ -33,6 +35,6 @@ class PangolinCallUpdateView(UpdateView):
         return reverse("calls:pango-detail", kwargs={"pk": self.object.pk})
 
 
-class PangolinCallDeleteView(DeleteView):
+class PangolinCallDeleteView(AdminOrStaffRequiredMixin, DeleteView):
     model = PangolinCall
     success_url = reverse_lazy("calls:list")
