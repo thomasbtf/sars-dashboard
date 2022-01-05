@@ -7,6 +7,7 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
 
+from sars_dashboard.changelog.views import ChangelogView
 from sars_dashboard.dashboards.views import SarsDashboardView
 
 urlpatterns = [
@@ -20,6 +21,7 @@ urlpatterns = [
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
+    path("changelog/", ChangelogView.as_view(), name="changelog"),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
