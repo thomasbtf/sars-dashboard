@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.14.0...v0.15.0) (2022-01-05)
+
+
+### Features
+
+* **frontend:** add theme, add changelog ([#64](https://github.com/thomasbtf/sars-dashboard/issues/64)) ([5875275](https://github.com/thomasbtf/sars-dashboard/commit/587527505841de5ec45db1a3559860e7e00e464b))
+
 ## [0.14.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.13.0...v0.14.0) (2022-01-05)
 
 
