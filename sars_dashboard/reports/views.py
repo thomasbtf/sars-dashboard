@@ -1,24 +1,20 @@
-from django.shortcuts import redirect, render
+from django.urls.base import reverse
+from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
-from .forms import ReportForm
+from sars_dashboard.mixins import AdminOrStaffRequiredMixin
+
 from .models import Report
 
 
-# @login_required
-def ReportCreateView(request):
-    if request.method == "POST":
-        form = ReportForm(request.POST, request.FILES)
+class ReportCreateView(AdminOrStaffRequiredMixin, CreateView):
+    model = Report
+    fields = "__all__"
 
-        if form.is_valid():
-            form.save()
-
-            return redirect("home")
-    else:
-        form = ReportForm()
-    return render(request, "reports/report_create.html", {"form": form})
+    def get_success_url(self):
+        return reverse("projects:list", kwargs={"pk": self.object.pk})
 
 
-class ReportListView(ListView):
+class ReportListView(AdminOrStaffRequiredMixin, ListView):
     model = Report
     paginate_by = 100  # if pagination is desired

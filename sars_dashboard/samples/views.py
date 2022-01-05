@@ -3,16 +3,17 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
+from sars_dashboard.mixins import AdminOrStaffRequiredMixin
 from sars_dashboard.samples.models import Sample
 
 
 # Create your views here.
-class SampleListView(ListView):
+class SampleListView(AdminOrStaffRequiredMixin, ListView):
     model = Sample
     paginate_by = 100  # if pagination is desired
 
 
-class SampleCreateView(CreateView):
+class SampleCreateView(AdminOrStaffRequiredMixin, CreateView):
     model = Sample
     fields = "__all__"
 
@@ -20,11 +21,11 @@ class SampleCreateView(CreateView):
         return reverse("samples:detail", kwargs={"pk": self.object.pk})
 
 
-class SampleDetailView(DetailView):
+class SampleDetailView(AdminOrStaffRequiredMixin, DetailView):
     model = Sample
 
 
-class SampleUpdateView(UpdateView):
+class SampleUpdateView(AdminOrStaffRequiredMixin, UpdateView):
     model = Sample
     fields = "__all__"
     template_name_suffix = "_update_form"
@@ -33,6 +34,6 @@ class SampleUpdateView(UpdateView):
         return reverse("samples:detail", kwargs={"pk": self.object.pk})
 
 
-class SampleDeleteView(DeleteView):
+class SampleDeleteView(AdminOrStaffRequiredMixin, DeleteView):
     model = Sample
     success_url = reverse_lazy("samples:list")

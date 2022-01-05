@@ -10,6 +10,20 @@
     <p>{{ object.name }}</p>
   {% endif %}
 
+  {% if request.user.is_staff %}
+    <p>
+      You are a staff member.
+    </p>
+  {% endif %}
+
+  {% if request.user.is_superuser %}
+    <p>
+      You are a superuser.
+    </p>
+  {% endif %}
+
+
+
   {% if object == request.user %}
     <!-- Action buttons -->
     <div class="row">

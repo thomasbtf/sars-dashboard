@@ -20,6 +20,8 @@ class SarsDashboardView(TemplateView):
         first_project = Project.objects.first()
         if first_project is None:
             context["project_name"] = "No project found"
+        else:
+            context["project_name"] = first_project.title
 
         samples_of_project = Sample.objects.filter(project=first_project)
 
@@ -49,13 +51,18 @@ class SarsDashboardView(TemplateView):
             calls_of_last_run = PangolinCall.objects.filter(
                 sample__in=samples_of_latest_run
             )
-            lineages_of_last_run = self.extract_and_mask_lineages_per_day(
-                calls_of_last_run
-            )
-            context["latest_run_plot"] = self.plot_lineages_of_last_run(
-                lineages_of_last_run
-            )
-            context["last_update"] = latest_run_date.date
+
+            if not calls_of_last_run.exists():
+                context["latest_run_plot"] = no_data
+                context["last_update"] = "-"
+            else:
+                lineages_of_last_run = self.extract_and_mask_lineages_per_day(
+                    calls_of_last_run
+                )
+                context["latest_run_plot"] = self.plot_lineages_of_last_run(
+                    lineages_of_last_run
+                )
+                context["last_update"] = latest_run_date.date
 
         return context
 
