@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.14.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.13.0...v0.14.0) (2022-01-05)
+
+
+### Features
+
+* **backend:** add access management ([#61](https://github.com/thomasbtf/sars-dashboard/issues/61)) ([5f6d2ea](https://github.com/thomasbtf/sars-dashboard/commit/5f6d2eab76bcbb08bb4a44eb89def05450b97d54))
+* **backend:** add object level permssions ([#63](https://github.com/thomasbtf/sars-dashboard/issues/63)) ([4b66f50](https://github.com/thomasbtf/sars-dashboard/commit/4b66f50b650fbb814539c57263f41e7b677a23a7))
+
 ## [0.13.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.12.0...v0.13.0) (2022-01-04)
 
 
