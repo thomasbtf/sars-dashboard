@@ -1,0 +1,9 @@
+{% extends "center_base.html" %}
+
+{% block nav %}{% with selected='changelog' %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% block inner %}
+
+    {{ changelog|safe }}
+
+{% endblock %}
