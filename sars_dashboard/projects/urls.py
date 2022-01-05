@@ -6,6 +6,8 @@ from sars_dashboard.projects.views import (
     ProjectDetailView,
     ProjectListView,
     ProjectUpdateView,
+    add_permission,
+    remove_permission,
 )
 
 app_name = "projects"
@@ -15,4 +17,10 @@ urlpatterns = [
     path("update/<int:pk>", ProjectUpdateView.as_view(), name="update"),
     path("delete/<int:pk>", ProjectDeleteView.as_view(), name="delete"),
     path("create/", ProjectCreateView.as_view(), name="create"),
+    path("permission/add/<int:project_id>", add_permission, name="add-permission"),
+    path(
+        "permission/remove/<int:project_id>",
+        remove_permission,
+        name="remove-permission",
+    ),
 ]
