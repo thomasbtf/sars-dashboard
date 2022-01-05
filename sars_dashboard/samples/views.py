@@ -3,8 +3,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
-from sars_dashboard.samples.models import Sample
 from sars_dashboard.mixins import AdminOrStaffRequiredMixin
+from sars_dashboard.samples.models import Sample
 
 
 # Create your views here.

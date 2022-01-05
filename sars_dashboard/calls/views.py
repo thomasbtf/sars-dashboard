@@ -1,12 +1,12 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from sars_dashboard.calls.models import PangolinCall
-
 from sars_dashboard.mixins import AdminOrStaffRequiredMixin
-from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 class PangolinCallListView(LoginRequiredMixin, ListView):

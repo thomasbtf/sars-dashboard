@@ -6,6 +6,7 @@ from sars_dashboard.mixins import AdminOrStaffRequiredMixin
 
 from .models import Report
 
+
 class ReportCreateView(AdminOrStaffRequiredMixin, CreateView):
     model = Report
     fields = "__all__"
