@@ -3,7 +3,7 @@ SHELL := /usr/bin/env bash
 PYTHON := python
 PYTHONPATH := `pwd`
 
-#* Django
+#* Django Local
 .PHONY: build
 build:
 	docker-compose -f local.yml build
@@ -39,3 +39,28 @@ flush:
 .PHONY: app
 app:
 	docker-compose -f local.yml run --rm django python manage.py startapp $(name)
+
+#* Django Production
+.PHONY: production-build
+production-build:
+	docker-compose -f production.yml build
+
+.PHONY: production-start
+production-start:
+	docker-compose -f production.yml up
+
+.PHONY: production-startd
+production-startd:
+	docker-compose -f production.yml up -d
+
+.PHONY: production-superuser
+production-superuser:
+	docker-compose -f production.yml run --rm django python manage.py createsuperuser
+
+.PHONY: production-migrations
+production-migrations:
+	docker-compose -f production.yml run --rm django python manage.py migrate
+
+.PHONY: production-shell
+production-shell:
+	docker-compose -f production.yml run --rm django python manage.py shell
