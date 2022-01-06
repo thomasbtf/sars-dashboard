@@ -61,3 +61,15 @@ services:
     <<: *django
     image: sars_dashboard_production_flower
     command: /start-flower
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./compose/production/nginx/Dockerfile
+    image: sars_dashboard_production_nginx
+    depends_on:
+      - django
+    ports:
+      - "0.0.0.0:80:80"
+    env_file:
+      - ./.envs/.production/.nginx
