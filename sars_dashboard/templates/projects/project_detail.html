@@ -32,10 +32,10 @@
                 <a href="{{report.index.first.file.url}}" class="text-decoration-none text-muted linkChanger" target="reportframe">{{ report.date|date:"d.m.Y" }}</a>
                 <div class="mx-2">
                     <small>
-                        <a href="{{report.index.first.file.url}}" class="mx-1 text-decoration-none">
+                        <a href="{{report.index.first.file.url}}" class="mx-1 text-decoration-none" data-toggle="tooltip" data-placement="left" title="Open in new tab">
                             <i class="fas fa-external-link-alt"></i>
                         </a>
-                        <a href="{{ report.zip_file.url }}" class="mx-1 text-decoration-none">
+                        <a href="{{ report.zip_file.url }}" class="mx-1 text-decoration-none" data-toggle="tooltip" data-placement="left" title="Download">
                             <i class="fas fa-download"></i>
                         </a>
                     </small>
@@ -56,17 +56,19 @@
 {% block inline_javascript %}
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-            console.log('DOMContentLoaded');
             $(document).ready(function() {
 
                 $( ".linkChanger" ).first().removeClass("text-muted");
 
                 $(".linkChanger").on('click', function(){
-                    console.log("clicked");
                     $(".linkChanger").addClass("text-muted");
                     $(this).removeClass("text-muted");
                 });
             });
+
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
 
         });
     </script>
