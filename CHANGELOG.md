@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.16.0...v0.17.0) (2022-01-06)
+
+
+### Features
+
+* update makefile, add hoverover in project ([#69](https://github.com/thomasbtf/sars-dashboard/issues/69)) ([4bb937c](https://github.com/thomasbtf/sars-dashboard/commit/4bb937c8a944362bc64abb376bc451c4c1b7c2c9))
+
 ## [0.16.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.15.0...v0.16.0) (2022-01-06)
 
 
