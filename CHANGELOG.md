@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.16.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.15.0...v0.16.0) (2022-01-06)
+
+
+### Features
+
+* **dep:** bump amannn/action-semantic-pull-request from 3.5.0 to 3.6.0 ([#67](https://github.com/thomasbtf/sars-dashboard/issues/67)) ([d83e221](https://github.com/thomasbtf/sars-dashboard/commit/d83e221f48a0e63f75c40e8ca564950e34025e64))
+* **frontend:** add favicon ([#66](https://github.com/thomasbtf/sars-dashboard/issues/66)) ([b2a22ad](https://github.com/thomasbtf/sars-dashboard/commit/b2a22ada84761020dd36c377fb23b41b7d66ed64))
+
 ## [0.15.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.14.0...v0.15.0) (2022-01-05)
 
 
