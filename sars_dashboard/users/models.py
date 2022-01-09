@@ -6,7 +6,7 @@ from guardian.mixins import GuardianUserMixin
 
 
 class User(GuardianUserMixin, AbstractUser):
-    """Default user for SARS-CoV-2 Dashboard."""
+    """Default user for Sequencing Dashboard."""
 
     #: First and last name do not cover name patterns around the globe
     name = CharField(_("Name of User"), blank=True, max_length=255)

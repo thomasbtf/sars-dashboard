@@ -1,9 +1,9 @@
-.. SARS-CoV-2 Dashboard documentation master file, created by
+.. Sequencing Dashboard documentation master file, created by
    sphinx-quickstart.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to SARS-CoV-2 Dashboard's documentation!
+Welcome to Sequencing Dashboard's documentation!
 ======================================================================
 
 .. toctree::

@@ -1,4 +1,4 @@
-# SARS-CoV-2 Dashboard
+# Sequencing Dashboard
 
 [![Tests](https://github.com/thomasbtf/sars-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/thomasbtf/sars-dashboard/actions/workflows/ci.yml)
 

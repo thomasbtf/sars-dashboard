@@ -86,14 +86,14 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
     "DJANGO_DEFAULT_FROM_EMAIL",
-    default="SARS-CoV-2 Dashboard <noreply@tbd.ikim.uk-essen.de>",
+    default="Sequencing Dashboard <noreply@tbd.ikim.uk-essen.de>",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
 EMAIL_SUBJECT_PREFIX = env(
     "DJANGO_EMAIL_SUBJECT_PREFIX",
-    default="[SARS-CoV-2 Dashboard]",
+    default="[Sequencing Dashboard]",
 )
 
 # ADMIN
@@ -112,7 +112,7 @@ EMAIL_BACKEND = "anymail.backends.mailjet.EmailBackend"
 ANYMAIL = {
     "MAILJET_API_KEY": env("MAILJET_API_KEY"),
     "MAILJET_SECRET_KEY": env("MAILJET_SECRET_KEY"),
-    "MAILJET_API_URL": env("MAILJET_API_URL", default="https://api.mailjet.com/v3"),
+    "MAILJET_API_URL": env("MAILJET_API_URL", default="https://api.mailjet.com/v3.1"),
 }
 
 # django-compressor
