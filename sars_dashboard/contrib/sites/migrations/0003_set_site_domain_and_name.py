@@ -14,7 +14,7 @@ def update_site_forward(apps, schema_editor):
         id=settings.SITE_ID,
         defaults={
             "domain": "tbd.ikim.uk-essen.de",
-            "name": "SARS-CoV-2 Dashboard",
+            "name": "IKIM Sequencing Dashboard",
         },
     )
 
