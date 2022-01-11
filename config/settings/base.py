@@ -76,6 +76,7 @@ THIRD_PARTY_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "guardian",
+    "django_sendfile",
 ]
 
 LOCAL_APPS = [
@@ -322,5 +323,9 @@ REST_FRAMEWORK = {
 
 # django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
 CORS_URLS_REGEX = r"^/api/.*$"
-# Your stuff...
-# ------------------------------------------------------------------------------
+
+# django-sendfile2
+# -------------------------------------------------------------------------------
+# https://django-sendfile2.readthedocs.io/en/latest/getting-started.html
+SENDFILE_ROOT = str(APPS_DIR / "protected")
+SENDFILE_URL = "/protected"

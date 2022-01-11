@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path
@@ -32,7 +31,8 @@ urlpatterns = [
     path("report/", include("sars_dashboard.reports.urls", namespace="reports")),
     path("sample/", include("sars_dashboard.samples.urls", namespace="samples")),
     path("calls/", include("sars_dashboard.calls.urls", namespace="calls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
 if settings.DEBUG:
     # Static file serving when using Gunicorn + Uvicorn for local web socket development
     urlpatterns += staticfiles_urlpatterns()

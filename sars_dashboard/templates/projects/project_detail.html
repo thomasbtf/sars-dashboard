@@ -19,7 +19,7 @@
     <div class="row h-100">
         <!-- iFrame -->
         <div class="col p-0">
-            <iframe name="reportframe" id="reportframe" class="iframe-preview" width="100%" height="100%" frameBorder="0" src="{{project.reports.first.index.first.file.url}}"></iframe>
+            <iframe name="reportframe" id="reportframe" class="iframe-preview" width="100%" height="100%" frameBorder="0" src="{% url 'reports:view' project.reports.first.pk %}"></iframe>
         </div>
         <!-- End of iFrame -->
 
@@ -29,13 +29,13 @@
             {% for report in project.reports.all %}
             <li class="list-group-item d-flex justify-content-between align-items-center text-muted">
                 {% if report.index.first.file %}
-                <a href="{{report.index.first.file.url}}" class="text-decoration-none text-muted linkChanger" target="reportframe">{{ report.date|date:"d.m.Y" }}</a>
+                <a href="{% url 'reports:view' report.pk %}" class="text-decoration-none text-muted linkChanger" target="reportframe">{{ report.date|date:"d.m.Y" }}</a>
                 <div class="mx-2">
                     <small>
-                        <a href="{{report.index.first.file.url}}" class="mx-1 text-decoration-none" data-toggle="tooltip" data-placement="left" title="Open in new tab">
+                        <a href="{% url 'reports:view' report.pk %}" class="mx-1 text-decoration-none" data-toggle="tooltip" data-placement="left" title="Open in new tab">
                             <i class="fas fa-external-link-alt"></i>
                         </a>
-                        <a href="{{ report.zip_file.url }}" class="mx-1 text-decoration-none" data-toggle="tooltip" data-placement="left" title="Download">
+                        <a href="{% url 'reports:download' report.pk %}" class="mx-1 text-decoration-none" data-toggle="tooltip" data-placement="left" title="Download">
                             <i class="fas fa-download"></i>
                         </a>
                     </small>
