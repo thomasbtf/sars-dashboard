@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
@@ -61,9 +62,11 @@ def add_permission(request, project_id):
         form = AddPermissionForm(data=request.POST or None, project_id=project.pk)
         if form.is_valid():
             user = form.cleaned_data.get("user")
-
             assign_perm("view_project", user, project)
-
+            messages.success(
+                request,
+                f"Added viewing permission for {user} to project {project.title}.",
+            )
             return HttpResponseRedirect(reverse("projects:list"))
 
     form = AddPermissionForm(
@@ -95,6 +98,10 @@ def remove_permission(request, project_id):
         if form.is_valid():
             user = form.cleaned_data.get("user")
             remove_perm("view_project", user, project)
+            messages.error(
+                request,
+                f"Removed viewing permission for {user} from project {project.title}.",
+            )
             return HttpResponseRedirect(reverse("projects:list"))
 
     form = RemovePermissionForm(project_id=project.pk)

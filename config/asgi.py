@@ -1,5 +1,5 @@
 """
-ASGI config for SARS-CoV-2 Dashboard project.
+ASGI config for Sequencing Dashboard project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

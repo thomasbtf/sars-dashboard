@@ -27,7 +27,7 @@ django.setup()
 
 # -- Project information -----------------------------------------------------
 
-project = "SARS-CoV-2 Dashboard"
+project = "Sequencing Dashboard"
 copyright = """2021, Thomas Battenfeld"""
 author = "Thomas Battenfeld"
 

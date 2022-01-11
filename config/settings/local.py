@@ -64,5 +64,8 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-eager-propagates
 CELERY_TASK_EAGER_PROPAGATES = True
-# Your stuff...
-# ------------------------------------------------------------------------------
+
+# django-sendfile2
+# -------------------------------------------------------------------------------
+# https://django-sendfile2.readthedocs.io/en/latest/getting-started.html
+SENDFILE_BACKEND = "django_sendfile.backends.development"

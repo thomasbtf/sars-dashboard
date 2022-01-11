@@ -273,6 +273,7 @@ tags
 
 ### Project template
 sars_dashboard/media/
+sars_dashboard/protected/
 
 .pytest_cache/
 .ipython/
