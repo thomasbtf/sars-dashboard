@@ -56,10 +56,10 @@ make startd
 
 ### Execute Management Commands
 
-As with any shell command that we wish to run in our container, this is done using the `docker-compose -f local.yml run --rm` command:
+As with any shell command that we wish to run in our container, this is done using the `docker-compose -f docker-compose-local.yml run --rm` command:
 
 ```bash
-docker-compose -f local.yml run --rm django python manage.py createsuperuser
+docker-compose -f docker-compose-local.yml run --rm django python manage.py createsuperuser
 ```
 
 Here, django is the target service we are executing the commands against.
