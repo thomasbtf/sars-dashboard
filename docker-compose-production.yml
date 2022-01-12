@@ -12,8 +12,8 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
-    image: sars_dashboard_production_django
-    user: root
+    image: dashboard_production_django
+    user: "0"
     depends_on:
       - postgres
       - redis
@@ -24,44 +24,59 @@ services:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
     command: /start
+    ports:
+      - "5000"
+    labels:
+      kompose.image-pull-policy: "Never"
 
   postgres:
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
-    image: sars_dashboard_production_postgres
+    image: dashboard_production_postgres
     volumes:
       - production_postgres_data:/var/lib/postgresql/data:Z
       - production_postgres_data_backups:/backups:z
     env_file:
       - ./.envs/.production/.postgres
-
+    ports:
+      - "5432"
+    labels:
+      kompose.image-pull-policy: "Never"
 
   redis:
     image: redis:6
     volumes:
       - production_redis:/data:z
+    ports:
+      - "6379"
 
   celeryworker:
     <<: *django
-    image: sars_dashboard_production_celeryworker
+    image: dashboard_production_celeryworker
     command: /start-celeryworker
+    labels:
+      kompose.image-pull-policy: "Never"
 
   celerybeat:
     <<: *django
-    image: sars_dashboard_production_celerybeat
+    image: dashboard_production_celerybeat
     command: /start-celerybeat
+    labels:
+      kompose.image-pull-policy: "Never"
 
   flower:
     <<: *django
-    image: sars_dashboard_production_flower
+    image: dashboard_production_flower
     command: /start-flower
+    labels:
+      kompose.image-pull-policy: "Never"
 
   nginx:
     build:
       context: .
       dockerfile: compose/production/nginx/Dockerfile
-    image: sars_dashboard_production_nginx
+    image: dashboard_production_nginx
     depends_on:
       - django
     volumes:
@@ -70,3 +85,5 @@ services:
     ports:
       - "0.0.0.0:80:80"
       - "0.0.0.0:5555:5555"
+    labels:
+      kompose.image-pull-policy: "Never"
