@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.17.0...v0.18.0) (2022-01-11)
+
+
+### Features
+
+* **production:** add webserver ([#71](https://github.com/thomasbtf/sars-dashboard/issues/71)) ([31f9fc4](https://github.com/thomasbtf/sars-dashboard/commit/31f9fc4ba085472977873fded5cb504466b7f1cc))
+
 ## [0.17.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.16.0...v0.17.0) (2022-01-06)
 
 
