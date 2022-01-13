@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.18.0...v0.19.0) (2022-01-13)
+
+
+### Features
+
+* **production:** introducing k8 ([#73](https://github.com/thomasbtf/sars-dashboard/issues/73)) ([abb74d0](https://github.com/thomasbtf/sars-dashboard/commit/abb74d01ef72120442ee89c087935756618ce5a0))
+
 ## [0.18.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.17.0...v0.18.0) (2022-01-11)
 
 
