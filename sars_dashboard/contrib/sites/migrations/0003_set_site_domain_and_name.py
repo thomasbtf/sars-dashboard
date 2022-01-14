@@ -13,7 +13,7 @@ def update_site_forward(apps, schema_editor):
     Site.objects.update_or_create(
         id=settings.SITE_ID,
         defaults={
-            "domain": "tbd.ikim.uk-essen.de",
+            "domain": "apps.ikim.uk-essen.de/dashboard",
             "name": "IKIM Sequencing Dashboard",
         },
     )
