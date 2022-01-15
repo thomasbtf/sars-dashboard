@@ -80,8 +80,8 @@ services:
     depends_on:
       - django
     volumes:
-      - production_static:/var/www/apps.ikim.uk-essen.de/static:z
-      - production_data:/var/www/apps.ikim.uk-essen.de/app/sars_dashboard/protected:z
+      - production_static:/var/www/apps.ikim.uk-essen.de/public/static:z
+      - production_data:/var/www/apps.ikim.uk-essen.de/public/app/sars_dashboard/protected:z
     ports:
       - "0.0.0.0:8080:80"
       - "0.0.0.0:5555:5555"
