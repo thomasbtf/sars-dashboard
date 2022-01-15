@@ -86,6 +86,13 @@ p-build-start:
 	make p-superuser
 	make p-start
 
+.PHONY: p-build-startd
+p-build-startd:
+	make p-flush
+	make p-build
+	make p-superuser
+	make p-startd
+
 .PHONY: p-shell
 p-shell:
 	docker-compose -f docker-compose-production.yml run --rm django python manage.py shell
