@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.20.1](https://github.com/thomasbtf/sars-dashboard/compare/v0.20.0...v0.20.1) (2022-01-16)
+
+
+### Bug Fixes
+
+* **production:** volume mountpoints ([#81](https://github.com/thomasbtf/sars-dashboard/issues/81)) ([3eb97a1](https://github.com/thomasbtf/sars-dashboard/commit/3eb97a164d1d47e1d4b3eec63fa89c1f90374a73))
+
 ## [0.20.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.19.0...v0.20.0) (2022-01-15)
 
 
