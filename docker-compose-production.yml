@@ -4,8 +4,19 @@ volumes:
   production_postgres_data: {}
   production_postgres_data_backups: {}
   production_redis: {}
-  production_static: {}
-  production_data: {}
+  production_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /var/www/apps.ikim.uk-essen.de/public/app/sars_dashboard/protected
+      o: bind
+  production_static:
+    driver: local
+    driver_opts:
+      type: none
+      device: /var/www/apps.ikim.uk-essen.de/public/static
+      o: bind
+
 
 services:
   django: &django
@@ -80,8 +91,8 @@ services:
     depends_on:
       - django
     volumes:
-      - production_static:/var/www/apps.ikim.uk-essen.de/public/static:z
-      - production_data:/var/www/apps.ikim.uk-essen.de/public/app/sars_dashboard/protected:z
+      - production_static:/static:z
+      - production_data:/app/sars_dashboard/protected:z
     ports:
       - "0.0.0.0:8080:80"
       - "0.0.0.0:5555:5555"
