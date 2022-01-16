@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.20.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.19.0...v0.20.0) (2022-01-15)
+
+
+### Features
+
+* **frontend:** add legal page ([#77](https://github.com/thomasbtf/sars-dashboard/issues/77)) ([397ddde](https://github.com/thomasbtf/sars-dashboard/commit/397dddeb044dc60f36f424862594a6b4dcbc406b))
+
+
+### Bug Fixes
+
+* **frontend:** make sidebar sticky ([#78](https://github.com/thomasbtf/sars-dashboard/issues/78)) ([ff19b40](https://github.com/thomasbtf/sars-dashboard/commit/ff19b405aca3a7d44e1caa048cb4b2c07cfd60b5))
+* **frontend:** reduce footer y spacing ([#79](https://github.com/thomasbtf/sars-dashboard/issues/79)) ([bfe029e](https://github.com/thomasbtf/sars-dashboard/commit/bfe029eb9dae03fdd82b3487efe4f5ff7c814fe2))
+* **production:** path to files, update makefile ([#80](https://github.com/thomasbtf/sars-dashboard/issues/80)) ([2a3edfc](https://github.com/thomasbtf/sars-dashboard/commit/2a3edfc1c15bb11df9da4c16565f3513376ce321))
+* **production:** use local dns zone ([#75](https://github.com/thomasbtf/sars-dashboard/issues/75)) ([9ff49b6](https://github.com/thomasbtf/sars-dashboard/commit/9ff49b601bc3cdd5614ae8de110de9e46bccf5b9))
+
 ## [0.19.0](https://github.com/thomasbtf/sars-dashboard/compare/v0.18.0...v0.19.0) (2022-01-13)
 
 
