@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.20.2](https://github.com/thomasbtf/sars-dashboard/compare/v0.20.1...v0.20.2) (2022-01-18)
+
+
+### Bug Fixes
+
+* **frontend:** sidebar bg color ([#85](https://github.com/thomasbtf/sars-dashboard/issues/85)) ([9d722d7](https://github.com/thomasbtf/sars-dashboard/commit/9d722d7b6ab6e7ae856816cd1985ef01e6982c9a))
+
 ### [0.20.1](https://github.com/thomasbtf/sars-dashboard/compare/v0.20.0...v0.20.1) (2022-01-16)
 
 
