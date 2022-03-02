@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -32,7 +32,7 @@ jobs:
       #     FILTER_REGEX_EXCLUDE: CHANGELOG.md
 
       # - name: Checkout Code Repository
-      #   uses: actions/checkout@v2
+      #   uses: actions/checkout@v3
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
@@ -51,7 +51,7 @@ jobs:
 
     steps:
       - name: Checkout Code Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Build the Stack
         run: docker-compose -f docker-compose-local.yml build
